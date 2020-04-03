@@ -36,7 +36,7 @@ Läsa på mer on scrum, hur de olika mötena bör vara upplaga och hur man plane
 ## What is my contribution towards the team’s deliveries?
 
 ### Vart är jag idag?
-Jag har designat den mockup vi har till appen, men också hjälp til med vårt project scope.
+Jag har designat den mockup vi har till appen, men också hjälp till med vår app idé och project scope.
 
 ### Vart ska jag?
 De uppgifter som behöver göras, som ingen annan slutför, vilket kan vara fler mockups, skapandet av kodbas eller fortsatt utvekling på kodbasen.
