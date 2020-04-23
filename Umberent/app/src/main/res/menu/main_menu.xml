@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/hav_account"
+            android:title="Mitt konto" />
+
+        <item
+            android:id="@+id/hav_payment"
+            android:title="Betalning" />
+
+        <item
+            android:id="@+id/hav_history"
+            android:title="Historik" />
+
+        <item
+            android:id="@+id/hav_settings"
+            android:title="Inställningar" />
+
+        <item
+            android:id="@+id/hav_help"
+            android:title="Hjälp" />
+
+    </group>
+
+</menu>
