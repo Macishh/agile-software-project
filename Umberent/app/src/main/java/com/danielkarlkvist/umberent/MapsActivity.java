@@ -3,7 +3,6 @@ package com.danielkarlkvist.umberent;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.FragmentActivity;
 
 import android.os.Bundle;
 import android.view.View;
