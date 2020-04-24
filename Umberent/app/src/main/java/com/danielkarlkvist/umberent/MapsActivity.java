@@ -27,27 +27,29 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_maps);
+
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
         hideNavigationBar();
 
-        drawerLayout = findViewById(R.id.test);
-        navigationView = findViewById(R.id.nav_view);
-        toolbar = findViewById(R.id.toolbar);
+        initializeViews();
 
         setSupportActionBar(toolbar);
-
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-
     }
 
+    private void initializeViews() {
+        drawerLayout = findViewById(R.id.test);
+        navigationView = findViewById(R.id.nav_view);
+        toolbar = findViewById(R.id.toolbar);
+    }
 
     /**
      * Manipulates the map once available.
@@ -61,7 +63,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
+        // Add a marker where lupis lives and move the camera
         LatLng hemmaHosLupis = new LatLng(57.680960, 11.984787);
         mMap.addMarker(new MarkerOptions().position(hemmaHosLupis).title("Hemma hos mig"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(hemmaHosLupis));
