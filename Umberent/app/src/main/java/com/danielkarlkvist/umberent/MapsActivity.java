@@ -20,9 +20,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private GoogleMap mMap;
 
-    DrawerLayout drawerLayout;
-    NavigationView navigationView;
-    Toolbar toolbar;
+    private DrawerLayout drawerLayout;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,14 +39,19 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         setSupportActionBar(toolbar);
 
+        addToggleForToolbar();
+    }
+
+    // adds a toggle for the toolbar so that when it is tapped, the side menu will pop out
+    private void addToggleForToolbar() {
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
     }
 
+    // finds the correct view in the xml file and connects it to the instance variables
     private void initializeViews() {
         drawerLayout = findViewById(R.id.test);
-        navigationView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
     }
 
