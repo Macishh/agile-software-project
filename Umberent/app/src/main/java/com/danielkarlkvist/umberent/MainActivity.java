@@ -6,23 +6,24 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.os.Bundle;
+import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
+    private MapFragment mapFragment = new MapFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        hideNavigationBar();
         initializeViews();
-
         setSupportActionBar(toolbar);
-
         addToggleForToolbar();
-
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, mapFragment).commit();
     }
 
     // adds a toggle for the toolbar so that when it is tapped, the side menu will pop out
@@ -36,5 +37,16 @@ public class MainActivity extends AppCompatActivity {
     private void initializeViews() {
         drawerLayout = findViewById(R.id.test1);
         toolbar = findViewById(R.id.toolbar1);
+    }
+
+    private void hideNavigationBar() {
+        this.getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
+
     }
 }
