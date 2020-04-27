@@ -12,12 +12,15 @@ public class Profile implements IProfile {
     private String expirationDate;
     private String cvc;
 
-    public Profile(String firstName, String lastName, String mail, String username, String password) {
+    public Profile(String firstName, String lastName, String username, String mail, String password, String cardNumber, String expirationDate, String cvc) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.mail = mail;
         this.username = username;
+        this.mail = mail;
         this.password = password;
+        this.cardNumber = cardNumber;
+        this.expirationDate = expirationDate;
+        this.cvc = cvc;
     }
 
     public String getFullName() {
@@ -32,5 +35,16 @@ public class Profile implements IProfile {
         return username;
     }
 
+    public String getCardNumber() {
+        return cardNumber;
+    }
+
+    public String getExpirationDate() {
+        return expirationDate;
+    }
+
+    public String getCvc() {
+        return cvc;
+    }
 
 }

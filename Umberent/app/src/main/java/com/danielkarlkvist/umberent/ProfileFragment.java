@@ -42,6 +42,7 @@ public class ProfileFragment extends Fragment {
         return v;
     }
 
+    // finds the correct view in the xml file and connects it to the instance variables
     private void initializeViews(View v) {
         fullNameTextView = v.findViewById(R.id.profile_name);
         usernameTextView = v.findViewById(R.id.profile_username);
