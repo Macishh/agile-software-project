@@ -24,7 +24,7 @@ public class ProfileFragment extends Fragment {
     private Umberent umberent;
     private IProfile user;
 
-    private ProfileFragment(Umberent umberent) {
+    public ProfileFragment(Umberent umberent) {
         this.umberent = umberent;
         this.user = umberent.getProfile();
     }
