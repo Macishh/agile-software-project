@@ -18,6 +18,7 @@ Jag läser och föjer guider/tutorials på internet. På developer.android.com f
 kan tänka sig i mitt stadie och jag ska försöka lägga ner några timmar på detta. 
 
 ## How can I help someone else, or the entire team, to learn something new?
+I don't have anything to update on this point compared to last week 1. 
   
 ###  Var är jag idag?  
   
