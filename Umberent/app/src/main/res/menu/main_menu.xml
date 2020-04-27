@@ -4,7 +4,12 @@
     <group android:checkableBehavior="single">
 
         <item
-            android:id="@+id/nav_account"
+            android:id="@+id/nav_map"
+            android:icon="@drawable/account_icon"
+            android:title="Karta" />
+
+        <item
+            android:id="@+id/nav_profile"
             android:icon="@drawable/account_icon"
             android:title="Mitt konto" />
 
