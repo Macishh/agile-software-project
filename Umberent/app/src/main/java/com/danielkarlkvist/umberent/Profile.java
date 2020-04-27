@@ -4,8 +4,8 @@ public class Profile {
 
     private String firstName;
     private String lastName;
-    private String mail;
     private String username;
+    private String mail;
     private String password;
 
     private String cardNumber;
