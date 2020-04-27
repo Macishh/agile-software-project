@@ -1,6 +1,6 @@
 package com.danielkarlkvist.umberent;
 
-public class Profile {
+public class Profile implements IProfile {
 
     private String firstName;
     private String lastName;
@@ -26,6 +26,10 @@ public class Profile {
 
     public String getLastName() {
         return lastName;
+    }
+
+    public String getFullName() {
+        return firstName + " " + lastName;
     }
 
     public String getMail() {
