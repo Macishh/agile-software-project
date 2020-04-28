@@ -8,4 +8,11 @@ public interface IProfile {
 
     String getUsername();
 
+    String getCardNumber();
+
+    String getExpirationDate();
+
+    String getCvc();
+
+
 }

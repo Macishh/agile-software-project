@@ -23,7 +23,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     Umberent umberent = new Umberent();
 
-    ProfileFragment profileFragment = new ProfileFragment(umberent);
+    private ProfileFragment profileFragment = new ProfileFragment(umberent);
+    private PaymentFragment paymentFragment = new PaymentFragment(umberent);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new MapFragment()).commit();
                 break;
             case R.id.nav_payment:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PaymentFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, paymentFragment).commit();
                 break;
             case R.id.nav_history:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HistoryFragment()).commit();
