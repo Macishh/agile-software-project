@@ -8,16 +8,15 @@ public interface IProfile {
 
     String getUsername();
 
+    String getFirstName();
+
+    String getLastName();
+
     String getCardNumber();
 
     String getExpirationDate();
 
     String getCvc();
-
-
-    String getFirstName();
-
-    String getLastName();
 
     void setFirstName(String firstName);
 
@@ -26,4 +25,14 @@ public interface IProfile {
     void setUsername(String username);
 
     void setMail(String username);
+
+    void setCardNumber(String cardNumber);
+
+    void setExpirationDate(String expirationDate);
+
+    void setCvc(String cvc);
+
+
+
+
 }
