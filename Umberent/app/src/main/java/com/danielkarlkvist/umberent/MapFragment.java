@@ -46,16 +46,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker where lupis lives and move the camera
-        LatLng emilsborg = new LatLng(57.680960, 11.984787);
-
-        mMap.addMarker(new MarkerOptions()
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.umberella_icon_available))
-                .position(emilsborg)
-                .title("9/10")).showInfoWindow();
+        Stand stand1 = new Stand("Emilsborg",57.680960, 11.984787, Stand.Availability.HIGH, mMap);
+        Stand stand2 = new Stand("Chalmers",57.686330588, 11.972662776, Stand.Availability.NONE, mMap);
 
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(emilsborg));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(stand1.getLatLng())); //change to current location and more zoomed in
 
         mMap.setOnMarkerClickListener(this);
     }
@@ -65,7 +60,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
     public boolean onMarkerClick(final Marker marker) {
 
         // Retrieve the data from the marker.
-        Integer clickCount = (Integer) marker.getTag();
         if(marker.getTitle().equals("9/10")){
             Toast.makeText(getActivity().getApplicationContext(), "5 kr / min", Toast.LENGTH_SHORT).show();
 
