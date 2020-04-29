@@ -36,9 +36,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         addToggleForToolbar();
         setNavigationListener();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, mapFragment).commit();
-
-
-
     }
 
     @Override
@@ -91,7 +88,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         | View.SYSTEM_UI_FLAG_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-
     }
 
 
