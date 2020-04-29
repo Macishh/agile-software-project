@@ -1,26 +1,19 @@
 package com.danielkarlkvist.umberent;
 
+
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.PopupWindow;
-import android.widget.Toast;
-
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 
-import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 
 
 /**
@@ -59,11 +52,17 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         mMap.setOnMarkerClickListener(this);
     }
 
-  /*  public void onButtonShowPopupWindowClick(View view) {
+    public void onMarkerClickShowPopupWindow(View view) {
 
         // inflate the layout of the popup window
+/*
+        LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popupView = inflater.inflate(R.layout.stand_card, null);
 
+        PopupWindow pop = new PopupWindow(inflater.inflate(R.layout.stand_card, null, false), 500, 500, true);
+        pop.showAtLocation(popupView, Gravity.BOTTOM, 0, 0);
 
+/*
         // create the popup window
         int width = LinearLayout.LayoutParams.WRAP_CONTENT;
         int height = LinearLayout.LayoutParams.WRAP_CONTENT;
@@ -82,22 +81,20 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
                 return true;
             }
         });
-    } */
+
+ */
+    }
 
     // Called when the user clicks a marker.
     @Override
     public boolean onMarkerClick(final Marker marker) {
 
+
         // Retrieve the data from the marker.
         if(marker.getTitle().equals("Emilsborg")){
+            StandFragment standFragment = new StandFragment();
+            standFragment.showPopupWindow(getView());
             //Toast.makeText(getActivity().getApplicationContext(), "5 kr / min", Toast.LENGTH_SHORT).show();
-            LayoutInflater inflater = (LayoutInflater)
-                    getActivity().getSystemService(LAYOUT_INFLATER_SERVICE);
-            View popupView = inflater.inflate(R.layout.stand_card, null);
-
-            PopupWindow pop = new PopupWindow(popupView);
-            //PopupWindow pop = new PopupWindow(inflater.inflate(R.layout.stand_card, null, false), true);
-            pop.showAtLocation(popupView, Gravity.BOTTOM, 40, 40);
 
         }
 
