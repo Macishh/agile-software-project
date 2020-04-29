@@ -70,4 +70,18 @@ public class Profile implements IProfile {
         return cvc;
     }
 
+    @Override
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
+    @Override
+    public void setExpirationDate(String expirationDate) {
+        this.expirationDate = expirationDate;
+    }
+
+    @Override
+    public void setCvc(String cvc) {
+        this.cvc = cvc;
+    }
 }

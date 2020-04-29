@@ -12,6 +12,12 @@ public interface IProfile {
 
     String getLastName();
 
+    String getCardNumber();
+
+    String getExpirationDate();
+
+    String getCvc();
+
     void setFirstName(String firstName);
 
     void setLastName(String lastName);
@@ -19,11 +25,14 @@ public interface IProfile {
     void setUsername(String username);
 
     void setMail(String username);
-    String getCardNumber();
 
-    String getExpirationDate();
+    void setCardNumber(String cardNumber);
 
-    String getCvc();
+    void setExpirationDate(String expirationDate);
+
+    void setCvc(String cvc);
+
+
 
 
 }
