@@ -1,11 +1,8 @@
 package com.danielkarlkvist.umberent;
 
-import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,7 +20,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * A fragment for the map which consists of markers of the umbrella stands.
  */
 public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
@@ -36,7 +33,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View v =  inflater.inflate(R.layout.fragment_map, container, false);
 
         SupportMapFragment mapFragment = (SupportMapFragment) this.getChildFragmentManager().findFragmentById(R.id.map);
@@ -45,7 +41,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         return v;
     }
 
-    //Creates and shows a marker
+    /** Creates the map and add markers to the umbrella stands */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -62,7 +58,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         mMap.moveCamera(CameraUpdateFactory.newLatLng(emilsborg));
 
         mMap.setOnMarkerClickListener(this);
-
     }
 
     // Called when the user clicks a marker.
