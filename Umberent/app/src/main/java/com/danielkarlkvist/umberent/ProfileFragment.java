@@ -37,13 +37,11 @@ public class ProfileFragment extends Fragment {
     private TextView editMailTextView;
     private EditText mailEditText;
 
-    private Umberent umberent;
     private IProfile user;
 
     boolean isInEditingMode = false;
 
     public ProfileFragment(Umberent umberent) {
-        this.umberent = umberent;
         this.user = umberent.getProfile();
     }
 
