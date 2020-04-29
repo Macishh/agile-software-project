@@ -5,35 +5,186 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/profile_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="{name}"
-        android:layout_centerHorizontal="true"
-        tools:layout_editor_absoluteX="168dp"
-        tools:layout_editor_absoluteY="356dp"
-        tools:ignore="MissingConstraints"
-        android:layout_marginTop="100dp"
-        android:textSize="24sp"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#0077C2">
 
-    <TextView
-        android:id="@+id/profile_username"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:text="username"
-        android:layout_centerHorizontal="true"
-        android:textSize="24sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mitt konto"
+            android:textSize="24sp"
+            android:textColor="#FFFFFF"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"/>
 
-    <TextView
-        android:id="@+id/profile_mail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:text="mail"
-        android:layout_centerHorizontal="true"
-        android:textSize="24sp"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize">
+
+        <Button
+            android:id="@+id/profile_edit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hej"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/profile_image"
+            android:layout_width="124dp"
+            android:layout_height="124dp"
+            android:src="@drawable/account_icon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"/>
+
+        <TextView
+            android:id="@+id/profile_name_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Namn"
+            android:textSize="20sp"
+            android:textColor="#1E88E5"
+            android:layout_marginTop="200dp"
+            android:layout_marginStart="40dp" />
+
+        <TextView
+            android:id="@+id/profile_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="{name}"
+            tools:layout_editor_absoluteX="168dp"
+            tools:layout_editor_absoluteY="356dp"
+            tools:ignore="MissingConstraints"
+            android:layout_marginTop="230dp"
+            android:layout_marginStart="40dp"
+            android:textSize="18sp"
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/profile_edit_firstname_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Förnamn"
+            android:textSize="20sp"
+            android:textColor="#1E88E5"
+            android:layout_marginTop="200dp"
+            android:layout_marginStart="40dp"
+            android:visibility="invisible"/>
+
+        <EditText
+            android:id="@+id/profile_edit_firstname"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="230dp"
+            android:layout_marginStart="40dp"
+            android:textSize="18sp"
+            android:visibility="invisible"/>
+
+        <TextView
+            android:id="@+id/profile_username_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Användarnamn"
+            android:textSize="20sp"
+            android:textColor="#1E88E5"
+            android:layout_marginTop="280dp"
+            android:layout_marginStart="40dp"/>
+
+        <TextView
+            android:id="@+id/profile_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="310dp"
+            android:text="username"
+            android:layout_marginStart="40dp"
+            android:textSize="18sp"
+            android:textColor="#000000"/>
+
+        <TextView
+            android:id="@+id/profile_edit_lastname_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Efternamn"
+            android:textSize="20sp"
+            android:textColor="#1E88E5"
+            android:layout_marginTop="280dp"
+            android:layout_marginStart="40dp"
+            android:visibility="invisible"/>
+
+        <EditText
+            android:id="@+id/profile_edit_lastname"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="310dp"
+            android:layout_marginStart="40dp"
+            android:textSize="18sp"
+            android:visibility="invisible"/>
+
+        <TextView
+            android:id="@+id/profile_mail_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mail"
+            android:textSize="20sp"
+            android:textColor="#1E88E5"
+            android:layout_marginTop="360dp"
+            android:layout_marginStart="40dp"/>
+
+        <TextView
+            android:id="@+id/profile_mail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="390dp"
+            android:layout_marginStart="40dp"
+            android:text="mail"
+            android:textSize="18sp"
+            android:textColor="#000000"/>
+
+        <TextView
+            android:id="@+id/profile_edit_username_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Användarnamn"
+            android:textSize="20sp"
+            android:textColor="#1E88E5"
+            android:layout_marginTop="360dp"
+            android:layout_marginStart="40dp"
+            android:visibility="invisible"/>
+
+        <EditText
+            android:id="@+id/profile_edit_username"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="390dp"
+            android:layout_marginStart="40dp"
+            android:textSize="18sp"
+            android:visibility="invisible"/>
+
+        <TextView
+            android:id="@+id/profile_edit_mail_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mail"
+            android:textSize="20sp"
+            android:textColor="#1E88E5"
+            android:layout_marginTop="440dp"
+            android:layout_marginStart="40dp"
+            android:visibility="invisible"/>
+
+        <EditText
+            android:id="@+id/profile_edit_mail"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="470dp"
+            android:layout_marginStart="40dp"
+            android:textSize="18sp"
+            android:visibility="invisible"/>
+
+    </RelativeLayout>
 
 
 </RelativeLayout>
