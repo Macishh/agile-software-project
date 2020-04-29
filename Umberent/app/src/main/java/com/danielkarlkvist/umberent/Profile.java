@@ -36,8 +36,24 @@ public class Profile implements IProfile {
         return firstName;
     }
 
+    public String getLastName() {
+        return lastName;
+    }
+
     @Override
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 }
