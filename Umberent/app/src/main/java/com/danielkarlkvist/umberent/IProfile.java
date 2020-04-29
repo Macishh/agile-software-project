@@ -8,4 +8,8 @@ public interface IProfile {
 
     String getUsername();
 
+    String getFirstName();
+
+    void setFirstName(String firstName);
+
 }

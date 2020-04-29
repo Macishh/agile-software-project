@@ -32,5 +32,12 @@ public class Profile implements IProfile {
         return username;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
 
+    @Override
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 }

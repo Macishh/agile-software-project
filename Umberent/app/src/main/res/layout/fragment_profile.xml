@@ -26,6 +26,12 @@
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize">
 
+        <Button
+            android:id="@+id/profile_edit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="hej"/>
+
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/profile_image"
@@ -36,13 +42,14 @@
             android:layout_marginTop="50dp"/>
 
         <TextView
+            android:id="@+id/profile_name_hint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Namn"
             android:textSize="20sp"
             android:textColor="#1E88E5"
             android:layout_marginTop="200dp"
-            android:layout_marginStart="40dp"/>
+            android:layout_marginStart="40dp" />
 
         <TextView
             android:id="@+id/profile_name"
@@ -55,7 +62,27 @@
             android:layout_marginTop="230dp"
             android:layout_marginStart="40dp"
             android:textSize="18sp"
-            android:textColor="#000000"/>
+            android:textColor="#000000" />
+
+        <TextView
+            android:id="@+id/profile_edit_firstname_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Förnamn"
+            android:textSize="20sp"
+            android:textColor="#1E88E5"
+            android:layout_marginTop="200dp"
+            android:layout_marginStart="40dp"
+            android:visibility="invisible"/>
+
+        <EditText
+            android:id="@+id/profile_edit_firstname"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="230dp"
+            android:layout_marginStart="40dp"
+            android:textSize="18sp"
+            android:visibility="invisible"/>
 
         <TextView
             android:layout_width="wrap_content"
