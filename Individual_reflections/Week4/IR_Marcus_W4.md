@@ -3,43 +3,43 @@
 ## What do I want to learn or understand better?
 
 ### Vart är jag idag?
-Jag har ungefär samma kunskap inom scrum som föregående vecka, jag har inte fokuserat så mycket på detta då jag känner att mina kunskaper är bra. Däremot har jag deltagit på våra möten och refreshat mina kunskaper inom sprint planering och standup. Jag har suttit en del i android studios och refreshat mitt minne hur fragments och activities fungerar, även kollat på hur projektet ska struktureras kod mässigt.
+Har lärt mig mer inom rollen som Scrum master, då jag kommer att ha denna rollen nästa vecka. Även lärt mig att strukturera utt user stories och skriva på Acceptance critera. Inom utveckligen har jag lärt mig om xml och hur xml object kopplas till java kod och hur dessa sedan kan användas för den fuktionallitet som är tänkt. 
 
-### Vart ska jag?  
-Få bättre kunskap inom parallel programmering och hur vilken inverkan scrum kan göra inom parallel programmering. Även hur man programmerar en i Android stuios på ett bra sätt som följer design möster och principer. 
+### Vart ska jag?
+Lära mig mer om hur en user story kan ge värde, och lära mig prioritera dem bättre. Men också lite samma som förra veckan, lära mig mer inom parallel programmering, och hur detta görs på bästa sätt. Något som kommer följa med flera veckor är att lära sig mer inom utvecklingoch specifik Android utveckling, det finns alltid något nytt att lära sig. Men nästa steg skulle nog vara att kolla upp hur man kan implememtera shortest path algoritmer till väg beskrivningen.
 
 ### Hur tar jag mig dit?
-Planera nästkommande sprint på ett bra sätt som medför att vi kan jobba parallelt. Ta vara på standup mötena, genom att fråga efter hjälp eller hjälpa någon annan som har problem. Även läsa på mer om android utveckling och lära mig utifrån det. 
+Diskutera mer med mina gruppmedlemmar och våra stakeholders vad som ger mest värde och planera ut dessa stories till nästa spint, men också planera dessa så att vi kan jobba parallelt på ett bra och effektivt sätt. För att lära sig utveckligen kommer youtube och Stackoverflow användas när man stöter på problem, eller innan en task börjas för att veta hur det ska struktureeas.
 
 ## How can I help someone else, or the entire team, to learn something new?
 
-### Vart är jag idag? 
-Eftersom jag använt android stuios tidigare och programmerat en del denna vecka kan jag bidra med den kusnap jag har. Vilket har gjort genom att förklara skillnad mellan fragment och activity, när man ska använda den ena eller den andra. Insom scrum har jag förklarat grundläggande begrepp, för de som varit osäkra.
+### Vart är jag idag?
+Jag harr lärt ut mina tidigare kunskaper till några medlemmar, vilket innebär hur appen är uppbyggd hitills, hur XML fungear och hur man kopplar ihop XML och vårt java fragemnts klasser. Jag har också hjälp medlemmar som jobbar på andra delar av applikationen genom att dela med mig av bra trådar och videos som löser derras problem. 
 
 ### Vart ska jag?
-Hjälpa gruppmedlemmarna att förstå utveklingen och hur de olika filerna kommunicerara med varandra.
+Detta är något återkommande, men att hjälpa de gruppmedellemar som fastnat och se till att problemet blir löst.
 
 ### Hur tar jag mig dit? 
-Sätter mig ner med de medlemmar som behöver hjälp och visar hur utvecklingen går till.
+Förbereder mig i förväg genom att göra lite mer research om android så jag är förberedd. Sedan genom att sätta mig med de personer som har prroblem och löser det tillsammans med dem.
 
 ## What is my contribution towards the team’s use of Scrum?
 
 ### Vart är jag idag?
-Jag har deltagit på vår sprint planering och våra stundup möten. Även delat upp user stories till mindre då några var lite för stora. 
+Jag harr dettagit på vår retrospective och våra standup möten. Planerat de user stories som ska göras och hur dessa ska fördelas. Gjort Task breakdown för de stories de behövdes till och accetance criteria till de stories vi planerat denna sprint. Även jobbat parallelt med vårat team, både esnkilld och i par tillsammans med Eric. 
 
-### Vart ska jag?  
-Planera user stories för nästkommande sprints, göra task breakdown och acceptance criteria. Även strukturera upp möten bättre så vi kan dela ut user stoies till olika personer utan att fördriva tiden och ta mer vara på våra standup möten. Även lära mig mer angående parallel programmering så alla kan jobba samtidigt utan konflikter. 
+### Vart ska jag?
+Jag ska agera Scrum master nästa vecka, vilket kommer leda till att jag ska bidrar till vårt användade av scrum. Vi kommer då att se till att de user stories som kommer utvecklas under nästa sprint har ett bra värde, så vi inte prioriterar fel. Lära mig mer inom rollen som scrum master och överlag hur scrum änvänds på bästa sätt.
 
-### Hur tar jag mig dit?  
-Sätat mig ner och börja planera, tillsammans med resten av gruppen så alla blir överrens och känner att de kan klara av de tasks de blir tilldelade. Även så att dessa tasks kan göras skilda från varandra. 
+### Hur tar jag mig dit?
+Börjar läsa på mer om scrum master, men också genom att delta på alla möten och håller i dem på ett bra och effektivt sätt. Kolla upp med gruppen och våra stakeholders vad som ger mest värde och utgår därifrån vilka stories som vi väljer.
 
 ## What is my contribution towards the team’s deliveries?
 
 ### Vart är jag idag?
-Hjälpte till med att få upp kartan i appen, genom en MapActivity. Därefter har jag strukturerat om appen så vår karta inte är en egen activity, utan en fragment. Detta för att lättare byta mellan olika vyer. Även skapat menyn på väster sidan som kommer vara navigationen i appen. Jag har också skrivit på vår Team Reflection för denna veckan.
+Jag har kopplat alla knappar i vår meny till olika fragments så man byter vy när dessa klickas på. Skapat mockups för de vyer som saknadesoch implementerat de mockups i XML filer till profile och payment tillsammans med Eric. Jag har sedan skapat alla objekt i java som gjordes i XML och implementerat fuktionallitet för att ändra sina uppgifter i appen. Jag har också skirivit team reflection.
 
 ### Vart ska jag?
-Göra klart de user stories som jag blir tilldelad, men också andra uppgifter som behöver göras för att utveckligen ska gå frammåt. Designa fler mockup vyer så vi vet hur designen kommer att se ut för övriga vyer.
+Fortsätta med utveckligen, se till att det som planerats under denna sprint blir gjort. Men också slutföra mina egan uppgifter. För att detta ska slutföras krävs mer kunskap inom utvecklingen
 
 ### Hur tar jag mig dit? 
-Diskuterar med gruppen vilka user stories som jag ska utföra, även ta hjälp med dessa om de behövs. Börja designa dessa mockups, diskutera med gruppen vilka features vi ska ha på varje sida så att de kan slutföras. 
+Gör de uppgifter jag blir tilldelan i tid, så att jag kan ta hjälp av de andra om det skulle behövas, men också så att jag har tid att hjälpa andra om de skulle fastna. För att få mer kunskap krävs research inom utveckligen.
