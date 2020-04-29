@@ -41,9 +41,6 @@ public class Profile implements IProfile {
     public String getCardNumber() {
         return cardNumber;
     }
-    public String getFirstName() {
-        return firstName;
-    }
 
     public String getExpirationDate() {
         return expirationDate;
@@ -72,13 +69,6 @@ public class Profile implements IProfile {
 
     public void setMail(String mail) {
         this.mail = mail;
-    }
-    public String getExpirationDate() {
-        return expirationDate;
-    }
-
-    public String getCvc() {
-        return cvc;
     }
 
     @Override
