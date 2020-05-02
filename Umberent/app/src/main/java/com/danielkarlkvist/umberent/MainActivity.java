@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
@@ -26,6 +27,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private ProfileFragment profileFragment = new ProfileFragment(umberent);
     private PaymentFragment paymentFragment = new PaymentFragment(umberent);
+    private HelpFragment helpFragment = new HelpFragment();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SettingsFragment()).commit();
                 break;
             case R.id.nav_help:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HelpFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, helpFragment).addToBackStack(null).commit();
                 break;
         }
 
