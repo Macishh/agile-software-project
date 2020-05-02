@@ -19,8 +19,28 @@
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_basement_17_0_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_basement_17_0_0_aar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_basement_17_0_0_aar2.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/danielkarlkvist/umberent/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/danielkarlkvist/umberent/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/danielkarlkvist/umberent/MapFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/danielkarlkvist/umberent/MapFragment.java" afterDir="false" />
+=======
+=======
+<<<<<<< Updated upstream
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/danielkarlkvist/umberent/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/danielkarlkvist/umberent/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/danielkarlkvist/umberent/MapFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/danielkarlkvist/umberent/MapFragment.java" afterDir="false" />
+=======
+<<<<<<< Updated upstream
+=======
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_payment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_payment.xml" afterDir="false" />
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+=======
+>>>>>>> paymentBranch
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/danielkarlkvist/umberent/IProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/danielkarlkvist/umberent/IProfile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/danielkarlkvist/umberent/Profile.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/danielkarlkvist/umberent/Profile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/danielkarlkvist/umberent/ProfileFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/danielkarlkvist/umberent/ProfileFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml" afterDir="false" />
+>>>>>>> profileBranch
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,7 +62,12 @@
       <state>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Umberent" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -120,7 +145,11 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+<<<<<<< HEAD
   <component name="ProjectId" id="1b89AAT94ifYUjrjsCkYKi1CFug" />
+=======
+  <component name="ProjectId" id="1bD1X0HNxHmXAbLPTALyzGDkwbv" />
+>>>>>>> profileBranch
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
