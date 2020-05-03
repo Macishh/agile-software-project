@@ -6,6 +6,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+/** A Stand-class that represents a stand on the map */
+
 public class Stand {
     private Umbrella[] umbrellas;
     private Marker marker;
@@ -14,6 +16,7 @@ public class Stand {
     private String title;
     private int icon;
     private Availability availability;
+
     public enum Availability {HIGH, LOW, NONE}
 
 
@@ -24,10 +27,7 @@ public class Stand {
         this.icon = icon;
         this.availability = availability;
 
-        googleMap.addMarker((new MarkerOptions()
-                .icon(BitmapDescriptorFactory.fromResource(setIcon()))
-                .position(new LatLng(longitude, latitude))
-                .title(title)));
+        addMarker(googleMap);
     }
 
     private int setIcon(){
@@ -42,9 +42,8 @@ public class Stand {
             case NONE:
                 this.icon = R.drawable.umberella_icon_not_available;
                 return this.icon;
-
         }
-        return 0; //create an exception if there isnt an availability
+        return 0; // TODO create an exception if there isnt an availability
     }
 
     public String getTitle() {
@@ -53,5 +52,12 @@ public class Stand {
 
     public LatLng getLatLng(){
         return new LatLng(longitude, latitude);
+    }
+
+    private void addMarker(GoogleMap googleMap) {
+        googleMap.addMarker((new MarkerOptions()
+                .icon(BitmapDescriptorFactory.fromResource(setIcon()))
+                .position(getLatLng())
+                .title(title)));
     }
 }
