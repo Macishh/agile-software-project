@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_map"
+            android:icon="@drawable/account_icon"
+            android:title="Karta" />
+
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/account_icon"
+            android:title="Mitt konto" />
+
+        <item
+            android:id="@+id/nav_payment"
+            android:icon="@drawable/payment_icon"
+            android:title="Betalning" />
+
+        <item
+            android:id="@+id/nav_history"
+            android:icon="@drawable/history_icon"
+            android:title="Historik" />
+
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/settings_icon"
+            android:title="Inställningar" />
+
+        <item
+            android:id="@+id/nav_help"
+            android:icon="@drawable/help_icon"
+            android:title="Hjälp" />
+
+    </group>
+
+</menu>
