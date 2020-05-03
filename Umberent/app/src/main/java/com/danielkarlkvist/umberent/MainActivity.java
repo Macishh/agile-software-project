@@ -40,9 +40,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setNavigationListener();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, mapFragment).commit();
 
-        boolean userIsLoggedIn = false;
-
-        if (!userIsLoggedIn) {
+        if (!umberent.userIsLoggedIn()) {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
         }

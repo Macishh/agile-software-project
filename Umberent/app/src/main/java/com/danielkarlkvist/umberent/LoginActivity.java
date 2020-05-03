@@ -13,6 +13,8 @@ public class LoginActivity extends AppCompatActivity {
     EditText emailEditText, passwordEditText;
     Button loginButton;
 
+    Umberent umberent = Umberent.getInstance();
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +26,8 @@ public class LoginActivity extends AppCompatActivity {
     public void onClickLogin(View view) {
         String userEmail = emailEditText.getText().toString();
         String userPassword = passwordEditText.getText().toString();
+
+        umberent.setUserIsLoggedIn(true);
 
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);

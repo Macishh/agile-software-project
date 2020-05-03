@@ -4,6 +4,8 @@ public class Umberent {
 
     private static Umberent instance;
 
+    private boolean userIsLoggedIn = false;
+
     private IProfile profile;
 
     private Umberent() {
@@ -20,5 +22,13 @@ public class Umberent {
 
     public IProfile getProfile() {
         return profile;
+    }
+
+    public boolean userIsLoggedIn() {
+        return userIsLoggedIn;
+    }
+
+    public void setUserIsLoggedIn(boolean userIsLoggedIn) {
+        this.userIsLoggedIn = userIsLoggedIn;
     }
 }
