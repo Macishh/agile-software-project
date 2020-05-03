@@ -25,17 +25,16 @@ public class PaymentFragment extends Fragment {
     private TextView expirationDateTextView;
     private TextView cvcTextView;
 
+    private Umberent umberent = Umberent.getInstance();
     private EditText cardNumberEditText;
     private EditText expirationDateEditText;
     private EditText cvcEditText;
 
-    private Umberent umberent;
     private IProfile user;
 
     boolean isInEditingMode = false;
 
-    public PaymentFragment(Umberent umberent) {
-        this.umberent = umberent;
+    public PaymentFragment() {
         this.user = umberent.getProfile();
     }
 
