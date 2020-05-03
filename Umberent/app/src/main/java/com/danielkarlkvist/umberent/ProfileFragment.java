@@ -28,6 +28,7 @@ public class ProfileFragment extends Fragment {
     private TextView userNameTextView;
     private TextView mailTextView;
 
+    private Umberent umberent = Umberent.getInstance();
     private TextView editFirstNameTextView;
     private EditText firstNameEditText;
     private TextView editLastNameTextView;
@@ -40,8 +41,7 @@ public class ProfileFragment extends Fragment {
     private IProfile user;
 
     boolean isInEditingMode = false;
-
-    public ProfileFragment(Umberent umberent) {
+    public ProfileFragment() {
         this.user = umberent.getProfile();
     }
 

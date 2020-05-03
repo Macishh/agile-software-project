@@ -7,4 +7,8 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="welcome_text">Välkommen till Umberent</string>
+    <string name="email_hint">Email</string>
+    <string name="logga_in_button_text">Logga in</string>
+    <string name="text_create_account">Har du inget konto? <a href="#">Skapa ett här!</a></string>
 </resources>
