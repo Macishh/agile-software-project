@@ -17,11 +17,10 @@ public class PaymentFragment extends Fragment {
     private TextView expirationDateTextView;
     private TextView cvcTextView;
 
-    private Umberent umberent;
+    private Umberent umberent = Umberent.getInstance();
     private IProfile user;
 
-    public PaymentFragment(Umberent umberent) {
-        this.umberent = umberent;
+    public PaymentFragment() {
         this.user = umberent.getProfile();
     }
 

@@ -2,10 +2,20 @@ package com.danielkarlkvist.umberent;
 
 public class Umberent {
 
-    IProfile profile;
+    private static Umberent instance;
 
-    public Umberent() {
+    private IProfile profile;
+
+    private Umberent() {
         profile = new Profile("Eric", "Jonsson", "hej@gmail.com", "hej", "123", "9999 8888 7777 6666", "23/45", "978");
+    }
+
+    public static Umberent getInstance() {
+        if (instance == null) {
+            instance = new Umberent();
+        }
+
+        return instance;
     }
 
     public IProfile getProfile() {

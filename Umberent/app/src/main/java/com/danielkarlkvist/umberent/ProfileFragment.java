@@ -21,11 +21,10 @@ public class ProfileFragment extends Fragment {
     private TextView usernameTextView;
     private TextView mailTextView;
 
-    private Umberent umberent;
+    private Umberent umberent = Umberent.getInstance();
     private IProfile user;
 
-    public ProfileFragment(Umberent umberent) {
-        this.umberent = umberent;
+    public ProfileFragment() {
         this.user = umberent.getProfile();
     }
 
