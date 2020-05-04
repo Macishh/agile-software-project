@@ -1,4 +1,4 @@
-package com.danielkarlkvist.umberent;
+package com.danielkarlkvist.umberent.UI;
 
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -6,6 +6,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+
+import com.danielkarlkvist.umberent.R;
 
 public class StandFragment {
 
