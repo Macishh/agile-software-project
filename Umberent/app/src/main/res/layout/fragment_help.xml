@@ -1,16 +1,270 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    tools:visibility="visible">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="fragment_help"
-        tools:layout_editor_absoluteX="168dp"
-        tools:layout_editor_absoluteY="356dp"
-        tools:ignore="MissingConstraints" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="56dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
+            android:background="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/aboutUsTitleTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginVertical="5dp"
+                    android:text="Om Umberent"
+                    android:textColor="#0077C2"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/aboutUsDivider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:background="#000000" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="12dp"
+                    android:paddingVertical="5dp">
+
+                    <Button
+                        android:id="@+id/aboutUsButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:background="#FFFFFF"
+                        android:gravity="center|left"
+                        android:paddingHorizontal="5dp"
+                        android:text="Om oss"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/whereCanIUseButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="25dp"
+                        android:background="#FFFFFF"
+                        android:gravity="center|left"
+                        android:paddingHorizontal="5dp"
+                        android:text="Vart kan jag använda Umberents paraplyer?"
+                        android:textAllCaps="false" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/generalTitleTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginVertical="5dp"
+                    android:text="Allmänt"
+                    android:textColor="#0077C2"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/generalDivider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:background="#000000" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="5dp">
+
+                    <Button
+                        android:id="@+id/cantStartRentalButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:background="#FFFFFF"
+                        android:gravity="center|left"
+                        android:paddingHorizontal="5dp"
+                        android:text="Jag kan inte starta min hyrning"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/cantEndRentalButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="25dp"
+                        android:background="#FFFFFF"
+                        android:gravity="center|left"
+                        android:paddingHorizontal="5dp"
+                        android:text="Jag kan inte avsluta min hyrning                                                >"
+                        android:textAllCaps="false" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/instructionsTitleTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginVertical="5dp"
+                    android:text="Intsruktioner"
+                    android:textColor="#0077C2"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/instructionsDivider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:background="#000000" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="5dp">
+
+                    <Button
+                        android:id="@+id/howStartButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:background="#FFFFFF"
+                        android:gravity="center|left"
+                        android:paddingHorizontal="5dp"
+                        android:text="Hur startar jag min hyrning?"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/howEndButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="25dp"
+                        android:background="#FFFFFF"
+                        android:gravity="center|left"
+                        android:paddingHorizontal="5dp"
+                        android:text="Hur avslutar jag min hyrning?"
+                        android:textAllCaps="false" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/paymentTitleTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginVertical="5dp"
+                    android:text="Betalning"
+                    android:textColor="#0077C2"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/paymentDivider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:background="#000000" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="5dp">
+
+                    <Button
+                        android:id="@+id/howChangeBillingInfoButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:background="#FFFFFF"
+                        android:gravity="center|left"
+                        android:paddingHorizontal="5dp"
+                        android:text="Hur ändrar jag mina betalningsuppgifter?"
+                        android:textAllCaps="false" />
+
+                    <Button
+                        android:id="@+id/chargedInexorableRentalButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_marginTop="25dp"
+                        android:background="#FFFFFF"
+                        android:gravity="center|left"
+                        android:paddingHorizontal="5dp"
+                        android:text="Jag har betalat för en hyrning jag inte kunnat avsluta"
+                        android:textAllCaps="false" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/appBugReportTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginVertical="5dp"
+                    android:text="Rapportera buggar i appen"
+                    android:textColor="#0077C2"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/appBugDivider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:background="#000000" />
+
+                <TextView
+                    android:id="@+id/umbrellaBugReportTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="12dp"
+                    android:layout_marginVertical="5dp"
+                    android:text="Rapportera buggar i paraplyerna"
+                    android:textColor="#0077C2"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:id="@+id/umbrellaBugDivider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="12dp"
+                    android:background="#000000" />
+
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#0077C2">
+
+        <TextView
+            android:id="@+id/helpTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Hjälp"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp" />
+    </RelativeLayout>
+
+</RelativeLayout>
