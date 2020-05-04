@@ -10,4 +10,9 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="AnimationPopUp">
+        <item name="android:windowEnterAnimation">@anim/show_stand_popup</item>
+        <item name="android:windowExitAnimation">@anim/hide_stand_popup</item>
+    </style>
+
 </resources>
