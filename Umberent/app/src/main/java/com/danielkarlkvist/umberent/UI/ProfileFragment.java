@@ -1,4 +1,4 @@
-package com.danielkarlkvist.umberent;
+package com.danielkarlkvist.umberent.UI;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,6 +12,10 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.danielkarlkvist.umberent.Model.IProfile;
+import com.danielkarlkvist.umberent.R;
+import com.danielkarlkvist.umberent.Model.Umberent;
 
 /**
  * A simple {@link Fragment} subclass.
