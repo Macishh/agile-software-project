@@ -22,14 +22,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Toolbar toolbar;
     private MapFragment mapFragment = new MapFragment();
 
-    Umberent umberent = new Umberent();
+    private Umberent umberent = Umberent.getInstance();
 
-    private ProfileFragment profileFragment = new ProfileFragment(umberent);
-    private PaymentFragment paymentFragment = new PaymentFragment(umberent);
+    private ProfileFragment profileFragment = new ProfileFragment();
+    private PaymentFragment paymentFragment = new PaymentFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
         hideNavigationBar();
@@ -38,6 +39,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         addToggleForToolbar();
         setNavigationListener();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, mapFragment).commit();
+
+        if (!umberent.userIsLoggedIn()) {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+        }
     }
 
     @Override
@@ -94,6 +100,4 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         | View.SYSTEM_UI_FLAG_FULLSCREEN
                         | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
     }
-
-
 }
