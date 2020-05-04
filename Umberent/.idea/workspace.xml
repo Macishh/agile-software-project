@@ -9,6 +9,7 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
 <<<<<<< Updated upstream
     <list default="true" id="0c97946d-5138-49b9-a539-0e4e7e6b6497" name="Default Changelist" comment="" />
 =======
@@ -58,6 +59,16 @@
       <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/shape_pcbutton2.xml" beforeDir="false" />
     </list>
 >>>>>>> Stashed changes
+=======
+<<<<<<< HEAD
+    <list default="true" id="0c97946d-5138-49b9-a539-0e4e7e6b6497" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/render.experimental.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+=======
+    <list default="true" id="0c97946d-5138-49b9-a539-0e4e7e6b6497" name="Default Changelist" comment="" />
+>>>>>>> dev
+>>>>>>> dev
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +78,11 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
+<<<<<<< HEAD
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_2_API_29" />
+=======
   <component name="ExecutionTargetManager" SELECTED_TARGET="Pixel_3_XL_API_29" />
+>>>>>>> dev
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -76,6 +91,23 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+<<<<<<< HEAD
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="resourceFile" />
+      </list>
+    </option>
+=======
         <projects_view />
       </state>
     </system>
@@ -202,6 +234,7 @@
       </file>
 >>>>>>> login
     </leaf>
+>>>>>>> dev
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -214,8 +247,17 @@
 =======
 >>>>>>> Stashed changes
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="profileBranch" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+<<<<<<< HEAD
+  <component name="ProjectId" id="1b89AAT94ifYUjrjsCkYKi1CFug" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+=======
 <<<<<<< HEAD
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="width" value="1440" />
@@ -315,8 +357,12 @@
 >>>>>>> login
     </panes>
   </component>
+<<<<<<< HEAD
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> dev
+>>>>>>> dev
   <component name="PropertiesComponent">
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="Pixel_3_XL_API_R" />
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2020-04-28T11:31:44.729Z" />
@@ -569,6 +615,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Android App.MainActivity" />
+        <item itemvalue="Android App.MainActivity" />
       </list>
     </recent_temporary>
   </component>
@@ -583,6 +630,42 @@
       <option name="presentableId" value="Default" />
       <updated>1587376667147</updated>
     </task>
+    <task id="LOCAL-00001" summary="Updated title on Help page">
+      <created>1588165266931</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1588165266931</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added scrollView and title for an about us section">
+      <created>1588169623043</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1588169623043</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added various titles for FAQ,  titles for reporting bugs in app &#10;and bugs in umbrellas">
+      <created>1588172894286</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1588172894286</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added button for about us, Added xml file for creating shadow &#10;effect on button">
+      <created>1588229921257</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1588229921257</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added more faq titles on the different topics">
+      <created>1588412393384</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1588412393384</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -739,5 +822,13 @@
         </state>
       </provider>
     </entry>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Updated title on Help page" />
+    <MESSAGE value="Added scrollView and title for an about us section" />
+    <MESSAGE value="Added various titles for FAQ,  titles for reporting bugs in app &#10;and bugs in umbrellas" />
+    <MESSAGE value="Added button for about us, Added xml file for creating shadow &#10;effect on button" />
+    <MESSAGE value="Added more faq titles on the different topics" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added more faq titles on the different topics" />
   </component>
 </project>
