@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "494775585564",
+    "firebase_url": "https://umberent-5f085.firebaseio.com",
+    "project_id": "umberent-5f085",
+    "storage_bucket": "umberent-5f085.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:494775585564:android:ec3c234f01b4c6ac1e88d9",
+        "android_client_info": {
+          "package_name": "com.danielkarlkvist.Umberent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "494775585564-qqvo4mku1lsuqeiu3ghcknotqi8hik51.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAg6qjWEFyqQ6cviEEIXRiO13WP7F_u7O0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "494775585564-qqvo4mku1lsuqeiu3ghcknotqi8hik51.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
