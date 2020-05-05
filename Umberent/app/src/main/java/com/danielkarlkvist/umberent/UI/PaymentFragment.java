@@ -51,7 +51,7 @@ public class PaymentFragment extends Fragment {
 
         cardNumberTextView.setText(user.getCardNumber());
         expirationDateTextView.setText(user.getExpirationDate());
-        cvcTextView.setText(user.getCvc());
+        cvcTextView.setText(user.getCVC());
 
         return v;
     }
@@ -112,7 +112,7 @@ public class PaymentFragment extends Fragment {
     private void editUserInformation() {
         cardNumberEditText.setText(user.getCardNumber());
         expirationDateEditText.setText(user.getExpirationDate());
-        cvcEditText.setText(user.getCvc());
+        cvcEditText.setText(user.getCVC());
     }
 
     private void changeVisibilityForEditMode() {
@@ -148,8 +148,8 @@ public class PaymentFragment extends Fragment {
         user.setExpirationDate(expirationDateEditText.getText().toString());
         expirationDateTextView.setText(user.getExpirationDate());
 
-        user.setCvc(cvcEditText.getText().toString());
-        cvcTextView.setText(user.getCvc());
+        user.setCVC(cvcEditText.getText().toString());
+        cvcTextView.setText(user.getCVC());
     }
 
 
