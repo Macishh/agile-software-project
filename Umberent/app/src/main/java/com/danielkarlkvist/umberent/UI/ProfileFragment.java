@@ -42,6 +42,7 @@ public class ProfileFragment extends Fragment {
     private TextView editMailTextView;
     private EditText mailEditText;
 
+
     private IProfile user;
 
     boolean isInEditingMode = false;
@@ -57,7 +58,6 @@ public class ProfileFragment extends Fragment {
         initializeButtonListeners();
 
         fullNameTextView.setText(user.getFullName());
-        userNameTextView.setText(user.getUsername());
         mailTextView.setText(user.getMail());
 
         return v;
@@ -119,7 +119,6 @@ public class ProfileFragment extends Fragment {
     private void editUserInformation() {
         firstNameEditText.setText(user.getFirstName());
         lastNameEditText.setText(user.getLastName());
-        userNameEditText.setText(user.getUsername());
         mailEditText.setText(user.getMail());
     }
 
@@ -169,9 +168,6 @@ public class ProfileFragment extends Fragment {
         user.setLastName(lastNameEditText.getText().toString());
         fullNameTextView.setText(user.getFullName());
 
-        user.setUsername(userNameEditText.getText().toString());
-        userNameTextView.setText(user.getUsername());
-        user.setMail(mailEditText.getText().toString());
         mailTextView.setText(user.getMail());
     }
 

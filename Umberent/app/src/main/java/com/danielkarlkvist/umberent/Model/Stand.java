@@ -1,64 +1,68 @@
 package com.danielkarlkvist.umberent.Model;
 
-import com.danielkarlkvist.umberent.R;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 
-/** A Stand-class that represents a stand on the map */
+import java.util.ArrayList;
+import java.util.List;
 
-public class Stand {
-    private Umbrella[] umbrellas;
-    private Marker marker;
+/**
+ * The Stand class represents a stand on the map.
+ * */
+class Stand implements IStand {
+    private int id;
+    private String title;
+
+    private List<Umbrella> umbrellas = new ArrayList<>();
+    private int capacity;
+
     private double longitude;
     private double latitude;
-    private String title;
-    private int icon;
-    private Availability availability;
 
-    public enum Availability {HIGH, LOW, NONE}
-
-
-    public Stand(String title, double longitude, double latitude, Availability availability, GoogleMap googleMap) {
+    public Stand(int id, String title, int capacity, double longitude, double latitude) {
+        this.id = id;
         this.title = title;
+        this.capacity = capacity;
         this.longitude = longitude;
         this.latitude = latitude;
-        this.icon = icon;
-        this.availability = availability;
-
-        addMarker(googleMap);
     }
 
-    private int setIcon(){
-
-        switch(availability){
-            case HIGH:
-                this.icon = R.drawable.umberella_icon_available;
-                return this.icon;
-            case LOW:
-                this.icon = R.drawable.umberella_icon_few_available;
-                return this.icon;
-            case NONE:
-                this.icon = R.drawable.umberella_icon_not_available;
-                return this.icon;
-        }
-        return 0; // TODO create an exception if there isnt an availability
+    public int getID() {
+        return id;
     }
 
     public String getTitle() {
         return title;
     }
 
+    public List<Umbrella> getUmbrellas() {
+        return umbrellas;
+    }
+
+    /**
+     * Returns the amount of umbrellas in the list.
+     * @return Returns the amount of umbrellas in the list.
+     */
+    public int getAmountOfUmbrellas() {
+        return umbrellas.size();
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
     public LatLng getLatLng(){
         return new LatLng(longitude, latitude);
     }
 
-    private void addMarker(GoogleMap googleMap) {
-        googleMap.addMarker((new MarkerOptions()
-                .icon(BitmapDescriptorFactory.fromResource(setIcon()))
-                .position(getLatLng())
-                .title(title)));
+    /**
+     * Adds an umbrella to the stand if we have not reached our maximum capacity.
+     * @param umbrella
+     */
+    public void addUmbrella(Umbrella umbrella) {
+        if (umbrellas.size() < capacity) {
+            umbrellas.add(umbrella);
+        } else {
+            System.out.println("Can not add any more umbrellas, stand reached max capacity");
+        }
     }
 }
