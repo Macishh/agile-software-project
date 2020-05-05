@@ -1,5 +1,6 @@
 package com.danielkarlkvist.umberent.UI;
 
+import android.icu.util.IslamicCalendar;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,25 +9,33 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.danielkarlkvist.umberent.Model.IStand;
+import com.danielkarlkvist.umberent.Model.Umberent;
 import com.danielkarlkvist.umberent.R;
-import com.danielkarlkvist.umberent.Model.Stand;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.List;
 
 /**
- * A fragment for the map which consists of markers of the umbrella stands.
+ * A fragment for the map which consists of markers for the umbrella stands.
  */
 public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
-    GoogleMap mMap;
+    GoogleMap googleMap;
     StandFragment standFragment;
+    Umberent umberent = Umberent.getInstance();
+    List<IStand> stands;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        stands = umberent.getStands();
+
         standFragment = new StandFragment();
 
         View v =  inflater.inflate(R.layout.fragment_map, container, false);
@@ -40,21 +49,20 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
     /** Creates the map and add markers to the umbrella stands */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
+        this.googleMap = googleMap;
 
-        Stand stand1 = new Stand("Emilsborg",57.680960, 11.984787, Stand.Availability.HIGH, mMap);
-        Stand stand2 = new Stand("Chalmers",57.686330588, 11.972662776, Stand.Availability.NONE, mMap);
+        for (int i = 0; i < stands.size(); i++) {
+            addMarker(stands.get(i));
+        }
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(stand1.getLatLng())); //change to current location and more zoomed in
+        this.googleMap.moveCamera(CameraUpdateFactory.newLatLng(stands.get(0).getLatLng())); //change to current location and more zoomed in
 
-        mMap.setOnMarkerClickListener(this);
+        this.googleMap.setOnMarkerClickListener(this);
     }
 
     // Called when the user clicks a marker.
     @Override
     public boolean onMarkerClick(final Marker marker) {
-
-
         // Retrieve the data from the marker.
         if(marker.getTitle().equals("Emilsborg")) {
             standFragment.showPopupWindow(getView());
@@ -68,5 +76,22 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         return false;
     }
 
+    private void addMarker(IStand stand) {
+        googleMap.addMarker((new MarkerOptions()
+                .icon(BitmapDescriptorFactory.fromResource(getStandIcon(stand)))
+                .position(stand.getLatLng())
+                .title(stand.getTitle())));
+    }
 
+    private int getStandIcon(IStand stand) {
+        double availability = (double) stand.getAmountOfUmbrellas() / (double) stand.getCapacity();
+
+        if (availability >= 0.5) {
+            return R.drawable.umberella_icon_available;
+        } else if (availability > 0) {
+            return R.drawable.umberella_icon_few_available;
+        } else {
+            return R.drawable.umberella_icon_not_available;
+        }
+    }
 }
