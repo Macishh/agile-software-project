@@ -19,6 +19,7 @@ import androidx.fragment.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -41,7 +42,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
 
     GoogleMap mMap;
     View mapView;
-    View locationButton;
+    ImageButton locationButton;
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
 
@@ -57,6 +58,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         SupportMapFragment mapFragment = (SupportMapFragment) this.getChildFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         mapView = mapFragment.getView();                //testrad
+        locationButton = (ImageButton) v.findViewById(R.id.myLocationBtn);
+        initializeButtonListener();
         return v;
     }
 
@@ -65,13 +68,13 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        mMap.setOnMyLocationButtonClickListener(onMyLocationButtonClickListener);
+       // mMap.setOnMyLocationButtonClickListener(onMyLocationButtonClickListener);
         enableMyLocationIfPermitted();
 
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.setMinZoomPreference(11);
         moveCameraToMyLocation();
-
+        mMap.getUiSettings().setMyLocationButtonEnabled(false);
 
         // Add a marker where lupis lives and move the camera
         LatLng emilsborg = new LatLng(57.680960, 11.984787);
@@ -144,14 +147,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         mMap.moveCamera(CameraUpdateFactory.newLatLng(Goteborg));
     }
 
-    private GoogleMap.OnMyLocationButtonClickListener onMyLocationButtonClickListener =
-            new GoogleMap.OnMyLocationButtonClickListener() {
-                @Override
-                public boolean onMyLocationButtonClick() {
-                    moveCameraToMyLocation();
-                    return false;
-                }
-            };
 
     // Called when the user clicks a marker.
     @Override
@@ -168,6 +163,16 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         // for the default behavior to occur (which is for the camera to move such that the
         // marker is centered and for the marker's info window to open, if it has one).
         return false;
+    }
+
+    private void initializeButtonListener(){
+        locationButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                moveCameraToMyLocation();
+            }
+
+        });
     }
 
 
