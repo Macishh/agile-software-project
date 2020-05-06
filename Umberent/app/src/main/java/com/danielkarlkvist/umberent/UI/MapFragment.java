@@ -52,6 +52,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
     ImageButton locationButton;
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
+    private Map<Marker, Integer> mHashMap = new HashMap<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
