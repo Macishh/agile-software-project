@@ -41,7 +41,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     GoogleMap mMap;
-    View mapView;
     ImageButton locationButton;
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
@@ -57,55 +56,42 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
 
         SupportMapFragment mapFragment = (SupportMapFragment) this.getChildFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        mapView = mapFragment.getView();                //testrad
-        locationButton = (ImageButton) v.findViewById(R.id.myLocationBtn);
+        initializeViews(v);
         initializeButtonListener();
         return v;
+    }
+
+    private void initializeViews(View v) {
+        locationButton = (ImageButton) v.findViewById(R.id.myLocationBtn);
     }
 
     //Creates and shows a marker
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
-       // mMap.setOnMyLocationButtonClickListener(onMyLocationButtonClickListener);
         enableMyLocationIfPermitted();
-
         mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.setMinZoomPreference(11);
         moveCameraToMyLocation();
         mMap.getUiSettings().setMyLocationButtonEnabled(false);
 
-        // Add a marker where lupis lives and move the camera
+        // Add a marker where lupis lives
         LatLng emilsborg = new LatLng(57.680960, 11.984787);
 
         mMap.addMarker(new MarkerOptions()
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.umberella_icon_available))
                 .position(emilsborg)
                 .title("9/10")).showInfoWindow();
-
-
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(emilsborg));
-
-        /*
-        mMap.setOnMarkerClickListener(this);
-        locationButton = ((View) mapView.findViewById(Integer.parseInt("1")).getParent()).findViewById(Integer.parseInt("2"));
-        locationButton.setOnClickListener((View.OnClickListener) onMyLocationButtonClickListener);
-
-
-         */
     }
 
 
     private void moveCameraToMyLocation() {
-
         LocationManager locMan = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         Criteria crit = new Criteria();
         if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
         Location loc = locMan.getLastKnownLocation(locMan.getBestProvider(crit, false));
-
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(loc.getLatitude(), loc.getLongitude()), 12.8f));
     }
 
@@ -113,7 +99,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         if (ContextCompat.checkSelfPermission(getActivity(),
                 Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(                //tidigare ActivityCompat.requestPermissions(getActivity()
+            requestPermissions(
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION,
                             Manifest.permission.ACCESS_FINE_LOCATION},
                     LOCATION_PERMISSION_REQUEST_CODE);
@@ -135,7 +121,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
                 }
                 return;
             }
-
         }
     }
 
@@ -151,14 +136,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
     // Called when the user clicks a marker.
     @Override
     public boolean onMarkerClick(final Marker marker) {
-
         // Retrieve the data from the marker.
         Integer clickCount = (Integer) marker.getTag();
         if(marker.getTitle().equals("9/10")){
             Toast.makeText(getActivity().getApplicationContext(), "5 kr / min", Toast.LENGTH_SHORT).show();
-
         }
-
         // Return false to indicate that we have not consumed the event and that we wish
         // for the default behavior to occur (which is for the camera to move such that the
         // marker is centered and for the marker's info window to open, if it has one).
@@ -171,9 +153,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
             public void onClick(View view) {
                 moveCameraToMyLocation();
             }
-
         });
     }
-
-
 }
