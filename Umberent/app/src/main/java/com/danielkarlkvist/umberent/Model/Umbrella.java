@@ -3,7 +3,7 @@ package com.danielkarlkvist.umberent.Model;
 /**
  * The Umbrella class contains all the information of an umbrella.
  */
-class Umbrella {
+public class Umbrella {
     private int id;
     private boolean isAvailable;
 

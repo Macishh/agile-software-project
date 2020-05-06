@@ -32,6 +32,18 @@
                 android:text="Hyr paraply"
                 android:textColor="#1233D1" />
 
+            <Button
+                android:id="@+id/end_rent_button"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="180dp"
+                android:layout_marginBottom="20dp"
+                android:background="#EFEDED"
+                android:radius="20dp"
+                android:text="Avsluta"
+                android:textColor="#F44336" />
+
         </LinearLayout>
 
         <TextView
