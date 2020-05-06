@@ -17,7 +17,6 @@ import com.danielkarlkvist.umberent.Model.Umberent;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private Toolbar toolbar;
