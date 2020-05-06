@@ -1,7 +1,6 @@
 package com.danielkarlkvist.umberent.UI;
 
-import android.icu.util.Calendar;
-import android.icu.util.LocaleData;
+
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -19,8 +18,6 @@ import com.danielkarlkvist.umberent.Model.Umbrella;
 import com.danielkarlkvist.umberent.R;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 public class StandFragment extends Fragment {
 
@@ -59,35 +56,30 @@ public class StandFragment extends Fragment {
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
 
 
-        Button rent_button = popupView.findViewById(R.id.rent_button);
+        rent_button = popupView.findViewById(R.id.rent_button);
+        end_rent_button = popupView.findViewById(R.id.end_rent_button);
         rent_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 rental.setStartTime(System.currentTimeMillis());
-                System.out.println(rental.getStartTime());
+                System.out.println("Rental start time is: " + rental.getStartTime());
+                hideRentButton();
+
+            }
+        });
+
+        end_rent_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                rental.setEndTime(System.currentTimeMillis());
+                rentalTime(rental.getStartTime(), rental.getEndTime());
+                calculatePrice(rental.getStartTime(), rental.getEndTime());
+                rental.setDate(LocalDate.now());
+
             }
         });
         //Initialize the elements of our window, install the handler
-/*
 
-        TextView test2 = popupView.findViewById(R.id.textView3);
-        test2.setText("hello");
-
-
-        Button buttonEdit = popupView.findViewById(R.id.messageButton);
-
-
-        buttonEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                //As an example, display the message
-                Toast.makeText(view.getContext(), "Wow, popup action button", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-*/
 
         //Handler for clicking on the inactive zone of the window
 
@@ -101,21 +93,26 @@ public class StandFragment extends Fragment {
             }
         });
     }
-/*
-    private void initializeButtonListeners() {
-        rent_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                rental.setStartDate(LocalDate.now());
-                System.out.println(rental.getStartDate());
-            }
-        });
-    }
 
-    private void initializeViews(View popupView){
-        rent_button = popupView.findViewById(R.id.rent_button);
-        end_rent_button = popupView.findViewById(R.id.end_rent_button);
+    private void hideRentButton() {
+        end_rent_button.setVisibility(View.VISIBLE);
+        rent_button.setVisibility(View.INVISIBLE);
 
     }
-*/
+
+    private long rentalTime(long startTime, long endTime) {
+
+
+        long difference = endTime - startTime;
+        System.out.println("Time of rental: " + difference/1000);
+        return difference;
+    }
+
+    private long calculatePrice(long startTime, long endTime){
+        long totalCost = (2*((endTime - startTime)/1000))/60;
+        System.out.println("Total cost is: " + totalCost);
+        return totalCost;
+
+    }
+
 }
