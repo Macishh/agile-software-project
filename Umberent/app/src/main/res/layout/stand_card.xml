@@ -48,7 +48,7 @@
             android:text="2 / 5" />
 
         <ImageView
-            android:id="@+id/umbrella_imageView"
+            android:id="@+id/umbrella_imageView2"
             android:layout_width="175dp"
             android:layout_height="150dp"
             android:rotation="10"

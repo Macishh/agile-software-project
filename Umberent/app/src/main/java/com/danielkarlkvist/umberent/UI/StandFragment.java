@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Chronometer;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
@@ -31,12 +32,13 @@ public class StandFragment extends Fragment {
 
     private Button rent_button;
     private Button end_rent_button;
+    private Button start_rent_button;
     private Chronometer rentalTimeElapsedChronometer;
     private boolean running = true;
     private Umberent umberent = Umberent.getInstance();
     private Umbrella umbrella = new Umbrella(1, true);
     private Rental rental = new Rental(System.currentTimeMillis(), System.currentTimeMillis(),  LocalDate.now(), umberent.getProfile(), umbrella);
-
+    private ImageView umbrella2;
     //PopupWindow display method
     public void showPopupWindow(final View view) {
 
@@ -61,17 +63,12 @@ public class StandFragment extends Fragment {
         //Set the location of the window on the screen
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
 
-
-        // initialize rent button
+// initialize rent button
         rent_button = popupView.findViewById(R.id.rent_button);
         rent_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                // Start a new rental
-
-                rental.setStartTime(System.currentTimeMillis());
-                System.out.println("Rental start time is: " + rental.getStartTime());
 
                 // Starts ticking stopwatch
                 startChronometer(view);
@@ -84,6 +81,8 @@ public class StandFragment extends Fragment {
 
             }
         });
+
+
 
         //Handler for clicking on the inactive zone of the window
         popupView.setOnTouchListener(new View.OnTouchListener() {
@@ -121,19 +120,40 @@ public class StandFragment extends Fragment {
         initializeRentalViews(rentalView);
         initializeRentalButtonListeners();
 
+
     }
 
     private void initializeRentalViews(View view) {
+        start_rent_button = view.findViewById(R.id.start_rent_button);
         end_rent_button = view.findViewById(R.id.end_rent_button);
         rentalTimeElapsedChronometer = view.findViewById(R.id.rentalTimeElapsedChronometer);
+        umbrella2=view.findViewById(R.id.umbrella_imageView2);
     }
 
     private void initializeRentalButtonListeners() {
+        // initialize rent button
+        start_rent_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // Start a new rental
+
+                rental.setStartTime(System.currentTimeMillis());
+                System.out.println("Rental start time is: " + rental.getStartTime());
+                rentalTimeElapsedChronometer.start();
+                start_rent_button.setVisibility(View.INVISIBLE);
+                umbrella2.setVisibility(View.VISIBLE);
+
+            }
+        });
+
+
         end_rent_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 rental.setEndTime(System.currentTimeMillis());
+                rentalTimeElapsedChronometer.stop();
                 calculateRentalTime(rental.getStartTime(), rental.getEndTime());
                 calculatePrice(rental.getStartTime(), rental.getEndTime());
                 rental.setDate(LocalDate.now());
@@ -141,8 +161,12 @@ public class StandFragment extends Fragment {
                 // reset chronometer
                 resetChronometer(v);
 
+                //"Open receipt"-statement here
+
             }
         });
+
+
     }
 
     private long calculateRentalTime(long startTime, long endTime) {
