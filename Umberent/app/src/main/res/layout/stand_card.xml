@@ -52,7 +52,7 @@
             android:layout_width="175dp"
             android:layout_height="150dp"
             android:rotation="10"
-            android:src="@drawable/umbrella_real" />
+            android:src="@drawable/umbrella_realshadow" />
 
         <TextView
             android:id="@+id/price_textView"
