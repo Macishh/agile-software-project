@@ -4,12 +4,15 @@ import android.icu.util.IslamicCalendar;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.danielkarlkvist.umberent.Model.IStand;
+import com.danielkarlkvist.umberent.Model.Rental;
 import com.danielkarlkvist.umberent.Model.Umberent;
 import com.danielkarlkvist.umberent.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -94,4 +97,5 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
             return R.drawable.umberella_icon_not_available;
         }
     }
+
 }
