@@ -28,4 +28,6 @@ public interface IProfile {
     void setExpirationDate(String expirationDate);
 
     void setCVC(String cvc);
+
+    void setMail(String mail);
 }

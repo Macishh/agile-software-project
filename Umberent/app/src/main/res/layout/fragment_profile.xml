@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="800dp">
+    android:layout_height="800dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -26,14 +26,27 @@
         android:layout_height="match_parent"
         android:layout_marginTop="?attr/actionBarSize">
 
-        <Button
+
+        <ImageButton
             android:id="@+id/profile_edit_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="hej"/>
+            app:srcCompat="@drawable/edit_button"
+            android:layout_marginLeft="370dp"
+            android:layout_marginTop="42dp"
+            android:background="#FFFFFF"/>
+
+        <ImageButton
+            android:id="@+id/profile_confirm_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/confirm_button"
+            android:layout_marginLeft="370dp"
+            android:layout_marginTop="42dp"
+            android:background="#FFFFFF"
+            android:visibility="invisible"/>
 
         <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/profile_image"
             android:layout_width="124dp"
             android:layout_height="124dp"
@@ -80,7 +93,7 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="230dp"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="35dp"
             android:textSize="18sp"
             android:visibility="invisible"/>
 
@@ -100,7 +113,7 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="310dp"
-            android:layout_marginStart="40dp"
+            android:layout_marginStart="35dp"
             android:textSize="18sp"
             android:visibility="invisible"/>
 
@@ -111,14 +124,14 @@
             android:text="Mail"
             android:textSize="20sp"
             android:textColor="#1E88E5"
-            android:layout_marginTop="360dp"
+            android:layout_marginTop="280dp"
             android:layout_marginStart="40dp"/>
 
         <TextView
             android:id="@+id/profile_mail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="390dp"
+            android:layout_marginTop="310dp"
             android:layout_marginStart="40dp"
             android:text="mail"
             android:textSize="18sp"
@@ -131,7 +144,7 @@
             android:text="Mail"
             android:textSize="20sp"
             android:textColor="#1E88E5"
-            android:layout_marginTop="440dp"
+            android:layout_marginTop="360dp"
             android:layout_marginStart="40dp"
             android:visibility="invisible"/>
 
@@ -139,8 +152,8 @@
             android:id="@+id/profile_edit_mail"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="470dp"
-            android:layout_marginStart="40dp"
+            android:layout_marginTop="390dp"
+            android:layout_marginStart="35dp"
             android:textSize="18sp"
             android:visibility="invisible"/>
 
