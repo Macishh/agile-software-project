@@ -4,12 +4,15 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 
 import com.danielkarlkvist.umberent.Model.Rental;
 import com.danielkarlkvist.umberent.Model.Umberent;
@@ -32,17 +35,31 @@ public class RentalFragment extends Fragment {
     public RentalFragment() {
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public void showRentalWindow(final View view) {
 
-        View v = inflater.inflate(R.layout.fragment_rental, container, false);
+        //Create a View object through inflater
+        final LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
+        final View popupView = inflater.inflate(R.layout.fragment_rental, null);
 
-        initializeViews(v);
+        //Specify the length and width through constants
+        int width = LinearLayout.LayoutParams.MATCH_PARENT;
+        int height = LinearLayout.LayoutParams.MATCH_PARENT;
+
+        boolean focusable = true;
+
+        //Create a window with our parameters
+        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+
+        //Set the animation of the window
+        popupWindow.setAnimationStyle(R.style.AnimationPopUp);
+
+        //Set the location of the window on the screen
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+        initializeViews(popupView);
         initializeButtonListeners();
 
-        return v;
     }
-
     private void initializeViews(View view) {
         end_rent_button = view.findViewById(R.id.end_rent_button);
         rentalTimeElapsedChronometer = view.findViewById(R.id.rentalTimeElapsedChronometer);

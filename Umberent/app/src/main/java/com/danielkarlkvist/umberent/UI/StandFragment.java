@@ -66,8 +66,7 @@ public class StandFragment extends Fragment {
                 fr.replace(R.id.fragment_container, rentalFragment);
                 fr.commit(); */
 
-                rentalFragment.onCreateView(R.layout.fragment_rental, container, false);
-
+               rentalFragment.showRentalWindow(getView());
             }
         });
 
