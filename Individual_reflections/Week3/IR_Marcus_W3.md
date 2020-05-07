@@ -1,18 +1,18 @@
-# Individual reflection: Marcus Axelsson, week 2
+# Individual reflection: Marcus Axelsson, week 3
 
 ## What do I want to learn or understand better?
-  
+
 ### Vart är jag idag?
 Jag har ungefär samma kunskap inom scrum som föregående vecka, jag har inte fokuserat så mycket på detta då jag känner att mina kunskaper är bra. Däremot har jag deltagit på våra möten och refreshat mina kunskaper inom sprint planering och standup. Jag har suttit en del i android studios och refreshat mitt minne hur fragments och activities fungerar, även kollat på hur projektet ska struktureras kod mässigt.
-  
+
 ### Vart ska jag?  
 Få bättre kunskap inom parallel programmering och hur vilken inverkan scrum kan göra inom parallel programmering. Även hur man programmerar en i Android stuios på ett bra sätt som följer design möster och principer. 
-  
+
 ### Hur tar jag mig dit?
 Planera nästkommande sprint på ett bra sätt som medför att vi kan jobba parallelt. Ta vara på standup mötena, genom att fråga efter hjälp eller hjälpa någon annan som har problem. Även läsa på mer om android utveckling och lära mig utifrån det. 
-  
+
 ## How can I help someone else, or the entire team, to learn something new?
-  
+
 ### Vart är jag idag? 
 Eftersom jag använt android stuios tidigare och programmerat en del denna vecka kan jag bidra med den kusnap jag har. Vilket har gjort genom att förklara skillnad mellan fragment och activity, när man ska använda den ena eller den andra. Insom scrum har jag förklarat grundläggande begrepp, för de som varit osäkra.
 
@@ -43,4 +43,3 @@ Göra klart de user stories som jag blir tilldelad, men också andra uppgifter s
 
 ### Hur tar jag mig dit? 
 Diskuterar med gruppen vilka user stories som jag ska utföra, även ta hjälp med dessa om de behövs. Börja designa dessa mockups, diskutera med gruppen vilka features vi ska ha på varje sida så att de kan slutföras. 
-
