@@ -49,6 +49,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
     private Umberent umberent = Umberent.getInstance();
     private List<IStand> stands;
 
+    HashMap<Marker, Integer> mHashMap = new HashMap<>();
+
     ImageButton locationButton;
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
