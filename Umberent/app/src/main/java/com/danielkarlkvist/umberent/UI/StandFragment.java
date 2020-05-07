@@ -1,16 +1,20 @@
 package com.danielkarlkvist.umberent.UI;
 
 
+import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTabHost;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.danielkarlkvist.umberent.Model.Rental;
 import com.danielkarlkvist.umberent.Model.Umberent;
@@ -18,25 +22,20 @@ import com.danielkarlkvist.umberent.Model.Umbrella;
 import com.danielkarlkvist.umberent.R;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class StandFragment extends Fragment {
 
 
     private Button rent_button;
-    private Button end_rent_button;
-    private Umberent umberent = Umberent.getInstance();
-    private Umbrella umbrella = new Umbrella(1, true);
-    private Rental rental = new Rental(System.currentTimeMillis(), System.currentTimeMillis(),  LocalDate.now(), umberent.getProfile(), umbrella);
+    RentalFragment rentalFragment;
 
     //PopupWindow display method
-
     public void showPopupWindow(final View view) {
 
-
-
         //Create a View object through inflater
-        LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(R.layout.stand_card, null);
+        final LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
+        final View popupView = inflater.inflate(R.layout.stand_card, null);
 
 
         //Specify the length and width through constants
@@ -57,27 +56,22 @@ public class StandFragment extends Fragment {
 
 
         rent_button = popupView.findViewById(R.id.rent_button);
-        end_rent_button = popupView.findViewById(R.id.end_rent_button);
         rent_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                rental.setStartTime(System.currentTimeMillis());
-                System.out.println("Rental start time is: " + rental.getStartTime());
-                hideRentButton();
+
+                /* FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fr = fragmentManager.beginTransaction();
+                RentalFragment rentalFragment = new RentalFragment();
+                fr.replace(R.id.fragment_container, rentalFragment);
+                fr.commit(); */
+
+                rentalFragment.onCreateView(R.layout.fragment_rental, container, false);
 
             }
         });
 
-        end_rent_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                rental.setEndTime(System.currentTimeMillis());
-                rentalTime(rental.getStartTime(), rental.getEndTime());
-                calculatePrice(rental.getStartTime(), rental.getEndTime());
-                rental.setDate(LocalDate.now());
 
-            }
-        });
         //Initialize the elements of our window, install the handler
 
 
@@ -94,25 +88,7 @@ public class StandFragment extends Fragment {
         });
     }
 
-    private void hideRentButton() {
-        end_rent_button.setVisibility(View.VISIBLE);
-        rent_button.setVisibility(View.INVISIBLE);
-
-    }
-
-    private long rentalTime(long startTime, long endTime) {
 
 
-        long difference = endTime - startTime;
-        System.out.println("Time of rental: " + difference/1000);
-        return difference;
-    }
-
-    private long calculatePrice(long startTime, long endTime){
-        long totalCost = (2*((endTime - startTime)/1000))/60;
-        System.out.println("Total cost is: " + totalCost);
-        return totalCost;
-
-    }
 
 }
