@@ -13,6 +13,7 @@ import android.widget.Chronometer;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -34,12 +35,13 @@ public class StandFragment extends Fragment {
     private Button end_rent_button;
     private Button start_rent_button;
     private Chronometer rentalTimeElapsedChronometer;
+    private TextView currentPriceTextView;
     private boolean running = false;
     private Umberent umberent = Umberent.getInstance();
     private Umbrella umbrella = new Umbrella(1, true);
     private Rental rental = new Rental(System.currentTimeMillis(), System.currentTimeMillis(),  LocalDate.now(), umberent.getProfile(), umbrella);
     private ImageView umbrella2;
-    private long pauseOffset;
+    private long difference;
 
 
     //PopupWindow display method
@@ -66,12 +68,11 @@ public class StandFragment extends Fragment {
         //Set the location of the window on the screen
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
 
-// initialize rent button
+        // initialize rent button
         rent_button = popupView.findViewById(R.id.rent_button);
         rent_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
 
                 // Remove stand window
                 popupWindow.dismiss();
@@ -81,7 +82,6 @@ public class StandFragment extends Fragment {
 
             }
         });
-
 
 
         //Handler for clicking on the inactive zone of the window
@@ -127,8 +127,21 @@ public class StandFragment extends Fragment {
     private void initializeRentalViews(View view) {
         start_rent_button = view.findViewById(R.id.start_rent_button);
         end_rent_button = view.findViewById(R.id.end_rent_button);
+        umbrella2 = view.findViewById(R.id.umbrella_imageView2);
+        currentPriceTextView = view.findViewById(R.id.currentPriceTextView);
+
+        // initiates stopwatch and sets in it so every 60 seconds price is updated on view
         rentalTimeElapsedChronometer = view.findViewById(R.id.rentalTimeElapsedChronometer);
-        umbrella2=view.findViewById(R.id.umbrella_imageView2);
+        rentalTimeElapsedChronometer.setFormat("Hyrningstid: %s");
+        rentalTimeElapsedChronometer.setBase(SystemClock.elapsedRealtime());
+        rentalTimeElapsedChronometer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
+            @Override
+            public void onChronometerTick(Chronometer chronometer) {
+                if ((SystemClock.elapsedRealtime() - rentalTimeElapsedChronometer.getBase()) >= 60000) {
+                    currentPriceTextView.setText("Totalt pris: " + calculatePrice(rental.getStartTime(), System.currentTimeMillis()) + "kr");
+                }
+            }
+        });
     }
 
     private void initializeRentalButtonListeners() {
@@ -140,15 +153,16 @@ public class StandFragment extends Fragment {
                 // Start a new rental
 
                 rental.setStartTime(System.currentTimeMillis());
+                //currentPriceTextView.setText("Totalt pris: " + calculatePrice(rental.getStartTime(), System.currentTimeMillis()));
                 System.out.println("Rental start time is: " + rental.getStartTime());
                 // start ticking stopwatch
                 startChronometer(view);
+
                 start_rent_button.setVisibility(View.INVISIBLE);
                 umbrella2.setVisibility(View.VISIBLE);
 
             }
         });
-
 
         end_rent_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,24 +181,25 @@ public class StandFragment extends Fragment {
             }
         });
 
-
     }
 
     private long calculateRentalTime(long startTime, long endTime) {
 
-        long difference = endTime - startTime;
+        difference = endTime - startTime;
         System.out.println("Time of rental: " + difference/1000 + " seconds");
         return difference;
     }
 
     private long calculatePrice(long startTime, long endTime){
 
-        long totalCost = (2*((endTime - startTime)/1000))/60;
+        difference = endTime - startTime;
+        long totalCost = (2*((difference)/1000))/60;
         System.out.println("Total cost is: " + totalCost + "kr");
         return totalCost;
 
     }
 
+    // Methods for Chronometer/Stopwatch
     private void startChronometer(View view) {
         if (!running) {
             rentalTimeElapsedChronometer.setBase(SystemClock.elapsedRealtime());
