@@ -14,6 +14,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,17 +33,23 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.w3c.dom.Text;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * A fragment for the map which consists of markers for the umbrella stands.
  */
 public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
-    GoogleMap googleMap;
-    StandFragment standFragment;
-    Umberent umberent = Umberent.getInstance();
-    List<IStand> stands;
+    private GoogleMap googleMap;
+    private StandFragment standFragment;
+    private Umberent umberent = Umberent.getInstance();
+    private List<IStand> stands;
+
+    HashMap<Marker, Integer> mHashMap = new HashMap<>();
 
     ImageButton locationButton;
 
@@ -87,7 +94,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         }
 
         this.googleMap.moveCamera(CameraUpdateFactory.newLatLng(stands.get(0).getLatLng())); //change to current location and more zoomed in
-
         this.googleMap.setOnMarkerClickListener(this);
 
         enableMyLocationIfPermitted();
@@ -97,6 +103,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         googleMap.getUiSettings().setMyLocationButtonEnabled(false);
     }
 
+
+    // This metod moves the camera to the current location
     private void moveCameraToMyLocation() {
         LocationManager locMan = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         Criteria crit = new Criteria();
@@ -107,6 +115,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(loc.getLatitude(), loc.getLongitude()), 12.8f));
     }
 
+    // This method sets current location
     private void enableMyLocationIfPermitted() {
         if (ContextCompat.checkSelfPermission(getActivity(),
                 Manifest.permission.ACCESS_FINE_LOCATION)
@@ -120,6 +129,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         }
     }
 
+    // This method checks if we are able to use the current location, else use default location
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
@@ -136,6 +146,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         }
     }
 
+    // This is a default location over Gothenburg if we are not able to use current location
     private void showDefaultLocation() {
         Toast.makeText(getActivity(), "Location permission not granted, " +
                         "showing default location",
@@ -146,13 +157,17 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
 
 
     // Called when the user clicks a marker.
+    /** Called when the user clicks a marker. Shows the stand card with the right info for that stand location */
     @Override
     public boolean onMarkerClick(final Marker marker) {
-        // Retrieve the data from the marker.
-        if(marker.getTitle().equals("Emilsborg")) {
-            standFragment.showPopupWindow(getView());
-        } else if (marker.getTitle().equals("Chalmers")) {
-            standFragment.showPopupWindow(getView());
+
+        int key = mHashMap.get(marker);
+
+        for (IStand stand : stands){
+            if(key == stand.getID()){
+                standFragment.showPopupWindow(getView());
+                standFragment.setStandInfo(stand);
+            }
         }
 
         // Return false to indicate that we have not consumed the event and that we wish
@@ -162,16 +177,17 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
     }
 
     private void addMarker(IStand stand) {
-        googleMap.addMarker((new MarkerOptions()
+        Marker m = googleMap.addMarker((new MarkerOptions()
                 .icon(BitmapDescriptorFactory.fromResource(getStandIcon(stand)))
                 .position(stand.getLatLng())
-                .title(stand.getTitle())));
+                .title("134 m")));
+        mHashMap.put(m, stand.getID());
     }
 
     private int getStandIcon(IStand stand) {
         double availability = (double) stand.getAmountOfUmbrellas() / (double) stand.getCapacity();
 
-        if (availability >= 0.5) {
+        if (availability >= 0.65) {
             return R.drawable.umberella_icon_available;
         } else if (availability > 0) {
             return R.drawable.umberella_icon_few_available;
@@ -179,4 +195,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
             return R.drawable.umberella_icon_not_available;
         }
     }
+
+
 }

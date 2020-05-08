@@ -27,10 +27,12 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="180dp"
                 android:layout_marginBottom="20dp"
-                android:background="#EFEDED"
+                android:background="@drawable/shape_pcbutton"
+                android:outlineAmbientShadowColor="#BC1A1A"
                 android:radius="20dp"
+
                 android:text="Hyr paraply"
-                android:textColor="#1233D1" />
+                android:textColor="@color/standText" />
 
         </LinearLayout>
 
@@ -41,7 +43,9 @@
             android:layout_marginStart="240dp"
             android:layout_marginTop="90dp"
             android:layout_marginEnd="30dp"
-            android:text="2 / 5" />
+            android:text="Amount"
+            android:textColor="@color/standText"
+            android:textSize="16dp"/>
 
         <ImageView
             android:id="@+id/umbrella_imageView"
@@ -50,27 +54,41 @@
             android:rotation="10"
             android:src="@drawable/umbrella_real" />
 
-         <TextView
+        <TextView
             android:id="@+id/price_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="240dp"
             android:layout_marginTop="120dp"
             android:layout_marginEnd="30dp"
-            android:text="2 kr / min" />
+            android:text="Price"
+            android:textColor="@color/standText"
+            android:textSize="16dp"/>
 
-      <ImageView
-            android:id="@+id/money_imageView"
+        <TextView
+            android:id="@+id/location_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="210dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="30dp"
+            android:text="Location"
+            android:textColor="@color/standText"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/money_imageView"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_marginStart="210dp"
             android:layout_marginTop="120dp"
             app:srcCompat="@drawable/payment_icon" />
 
         <ImageView
             android:id="@+id/umbrella_icon_imageView"
-            android:layout_width="18dp"
-            android:layout_height="18dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_marginStart="210dp"
             android:layout_marginTop="90dp"
             app:srcCompat="@drawable/umbrella_icon" />

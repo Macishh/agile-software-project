@@ -6,10 +6,18 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 
+import com.danielkarlkvist.umberent.Model.IStand;
 import com.danielkarlkvist.umberent.R;
 
 public class StandFragment {
+
+
+    private TextView locationTextView;
+    private TextView priceTextView;
+    private TextView amountTextView;
+
 
     //PopupWindow display method
 
@@ -35,28 +43,8 @@ public class StandFragment {
         //Set the location of the window on the screen
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
 
-
         //Initialize the elements of our window, install the handler
-/*
-
-        TextView test2 = popupView.findViewById(R.id.textView3);
-        test2.setText("hello");
-
-
-        Button buttonEdit = popupView.findViewById(R.id.messageButton);
-
-
-        buttonEdit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                //As an example, display the message
-                Toast.makeText(view.getContext(), "Wow, popup action button", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-*/
+        initializeViews(popupView);
 
         //Handler for clicking on the inactive zone of the window
 
@@ -71,5 +59,18 @@ public class StandFragment {
         });
     }
 
+     void setStandInfo(IStand stand) {
+         locationTextView.setText(stand.getTitle());
+         if (stand.getAmountOfUmbrellas() > 1) amountTextView.setText(stand.getAmountOfUmbrellas() + " / " + stand.getCapacity() + " lediga");
+         else amountTextView.setText(stand.getAmountOfUmbrellas() + " / " + stand.getCapacity() + " ledig");
+       priceTextView.setText("2kr / min");
+
+    }
+
+    private void initializeViews(View v) {
+        locationTextView = v.findViewById(R.id.location_textView);
+        priceTextView = v.findViewById(R.id.price_textView);
+        amountTextView = v.findViewById(R.id.amount_textView);
+    }
 
 }
