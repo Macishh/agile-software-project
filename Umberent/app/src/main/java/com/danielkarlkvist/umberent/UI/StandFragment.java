@@ -34,11 +34,14 @@ public class StandFragment extends Fragment {
     private Button end_rent_button;
     private Button start_rent_button;
     private Chronometer rentalTimeElapsedChronometer;
-    private boolean running = true;
+    private boolean running = false;
     private Umberent umberent = Umberent.getInstance();
     private Umbrella umbrella = new Umbrella(1, true);
     private Rental rental = new Rental(System.currentTimeMillis(), System.currentTimeMillis(),  LocalDate.now(), umberent.getProfile(), umbrella);
     private ImageView umbrella2;
+    private long pauseOffset;
+
+
     //PopupWindow display method
     public void showPopupWindow(final View view) {
 
@@ -70,9 +73,6 @@ public class StandFragment extends Fragment {
             public void onClick(View view) {
 
 
-                // Starts ticking stopwatch
-                startChronometer(view);
-
                 // Remove stand window
                 popupWindow.dismiss();
 
@@ -99,6 +99,7 @@ public class StandFragment extends Fragment {
     }
 
     private void openRentalWindow(final View view) {
+
         LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
         View rentalView = inflater.inflate(R.layout.fragment_rental, null);
 
@@ -140,7 +141,8 @@ public class StandFragment extends Fragment {
 
                 rental.setStartTime(System.currentTimeMillis());
                 System.out.println("Rental start time is: " + rental.getStartTime());
-                rentalTimeElapsedChronometer.start();
+                // start ticking stopwatch
+                startChronometer(view);
                 start_rent_button.setVisibility(View.INVISIBLE);
                 umbrella2.setVisibility(View.VISIBLE);
 
@@ -153,7 +155,6 @@ public class StandFragment extends Fragment {
             public void onClick(View v) {
 
                 rental.setEndTime(System.currentTimeMillis());
-                rentalTimeElapsedChronometer.stop();
                 calculateRentalTime(rental.getStartTime(), rental.getEndTime());
                 calculatePrice(rental.getStartTime(), rental.getEndTime());
                 rental.setDate(LocalDate.now());
@@ -186,12 +187,18 @@ public class StandFragment extends Fragment {
 
     private void startChronometer(View view) {
         if (!running) {
+            rentalTimeElapsedChronometer.setBase(SystemClock.elapsedRealtime());
              rentalTimeElapsedChronometer.start();
              running = true;
         }
     }
 
     private void resetChronometer(View view) {
-        rentalTimeElapsedChronometer.setBase(SystemClock.elapsedRealtime());
+        if (running) {
+            rentalTimeElapsedChronometer.setBase(SystemClock.elapsedRealtime());
+            rentalTimeElapsedChronometer.stop();
+            running = false;
+        }
+
     }
 }
