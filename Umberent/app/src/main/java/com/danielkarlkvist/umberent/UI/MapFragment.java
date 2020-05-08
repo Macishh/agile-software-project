@@ -103,6 +103,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         googleMap.getUiSettings().setMyLocationButtonEnabled(false);
     }
 
+
+    // This metod moves the camera to the current location
     private void moveCameraToMyLocation() {
         LocationManager locMan = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         Criteria crit = new Criteria();
@@ -113,6 +115,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(loc.getLatitude(), loc.getLongitude()), 12.8f));
     }
 
+    // This method sets current location
     private void enableMyLocationIfPermitted() {
         if (ContextCompat.checkSelfPermission(getActivity(),
                 Manifest.permission.ACCESS_FINE_LOCATION)
@@ -126,6 +129,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         }
     }
 
+    // This method checks if we are able to use the current location, else use default location
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
@@ -142,6 +146,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         }
     }
 
+    // This is a default location over Gothenburg if we are not able to use current location
     private void showDefaultLocation() {
         Toast.makeText(getActivity(), "Location permission not granted, " +
                         "showing default location",
