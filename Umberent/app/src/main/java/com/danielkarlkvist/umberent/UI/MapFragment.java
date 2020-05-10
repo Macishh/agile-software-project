@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.Toast;
+import android.widget.TextView;
 
 import com.danielkarlkvist.umberent.Model.IStand;
 import com.danielkarlkvist.umberent.Model.Umberent;
@@ -48,6 +49,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
     private StandFragment standFragment;
     private Umberent umberent = Umberent.getInstance();
     private List<IStand> stands;
+
+    private Map<Marker, Integer> mHashMap = new HashMap<Marker, Integer>();
 
     ImageButton locationButton;
 
@@ -100,6 +103,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         googleMap.setMinZoomPreference(11);
         moveCameraToMyLocation();
         googleMap.getUiSettings().setMyLocationButtonEnabled(false);
+        this.googleMap.setOnMarkerClickListener(this);
     }
 
     private void moveCameraToMyLocation() {
@@ -151,6 +155,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
 
 
     // Called when the user clicks a marker.
+    /** Called when the user clicks a marker. Shows the stand card with the right info for that stand location */
     /** Called when the user clicks a marker. Shows the stand card with the right info for that stand location */
     @Override
     public boolean onMarkerClick(final Marker marker) {
