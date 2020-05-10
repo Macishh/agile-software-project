@@ -84,4 +84,8 @@ class Profile implements IProfile {
     public void setCVC(String cvc) {
         this.cvc = cvc;
     }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
 }
