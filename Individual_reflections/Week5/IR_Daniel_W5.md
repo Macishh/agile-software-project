@@ -1,4 +1,4 @@
-# Individual reflection: Theodor Khademi, week 5
+# Individual reflection: Daniel Karlkvist, week 5
 
 ## What do I want to learn or understand better?
 
