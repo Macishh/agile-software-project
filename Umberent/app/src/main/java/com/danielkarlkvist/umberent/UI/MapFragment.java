@@ -42,7 +42,7 @@ import java.util.Map;
 /**
  * A fragment for the map which consists of markers for the umbrella stands.
  */
-public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
+public class  MapFragment extends Fragment implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     private GoogleMap googleMap;
     private StandFragment standFragment;
@@ -170,6 +170,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
             }
         }
 
+
         // Return false to indicate that we have not consumed the event and that we wish
         // for the default behavior to occur (which is for the camera to move such that the
         // marker is centered and for the marker's info window to open, if it has one).
@@ -195,6 +196,5 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
             return R.drawable.umberella_icon_not_available;
         }
     }
-
-
+    
 }
