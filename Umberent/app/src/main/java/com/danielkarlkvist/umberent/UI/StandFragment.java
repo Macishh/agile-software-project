@@ -75,6 +75,9 @@ public class StandFragment extends Fragment {
         //Set the location of the window on the screen
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
 
+        //Initialize the elements of our window, install the handler
+        initializeViews(popupView);
+
         // initialize rent button
         rent_button = popupView.findViewById(R.id.rent_button);
         rent_button.setOnClickListener(new View.OnClickListener() {
@@ -83,8 +86,6 @@ public class StandFragment extends Fragment {
 
                 // Remove stand window
                 popupWindow.dismiss();
-        //Initialize the elements of our window, install the handler
-        initializeViews(popupView);
 
                 // Open Rental window
                 openRentalWindow(view);
@@ -109,12 +110,12 @@ public class StandFragment extends Fragment {
 
      void setStandInfo(IStand stand) {
          locationTextView.setText(stand.getTitle());
-         if (stand.getAmountOfUmbrellas() > 1) amountTextView.setText(stand.getAmountOfUmbrellas() + " / " + stand.getCapacity() + " lediga");
-         else amountTextView.setText(stand.getAmountOfUmbrellas() + " / " + stand.getCapacity() + " ledig");
-       priceTextView.setText("2kr / min");
-    private void openRentalWindow(final View view) {
-
-    }
+         if (stand.getAmountOfUmbrellas() > 1)
+             amountTextView.setText(stand.getAmountOfUmbrellas() + " / " + stand.getCapacity() + " lediga");
+         else
+             amountTextView.setText(stand.getAmountOfUmbrellas() + " / " + stand.getCapacity() + " ledig");
+         priceTextView.setText("2kr / min");
+     }
 
     private void initializeViews(View v) {
         locationTextView = v.findViewById(R.id.location_textView);
@@ -122,6 +123,7 @@ public class StandFragment extends Fragment {
         amountTextView = v.findViewById(R.id.amount_textView);
     }
 
+    private void openRentalWindow(final View view) {
         LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
         View rentalView = inflater.inflate(R.layout.fragment_rental, null);
 
@@ -142,8 +144,6 @@ public class StandFragment extends Fragment {
 
         initializeRentalViews(rentalView);
         initializeRentalButtonListeners();
-
-
     }
 
     private void initializeRentalViews(View view) {
