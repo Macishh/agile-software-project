@@ -21,7 +21,6 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.Toast;
 import android.widget.TextView;
-
 import com.danielkarlkvist.umberent.Model.IStand;
 import com.danielkarlkvist.umberent.Model.Umberent;
 import com.danielkarlkvist.umberent.R;
@@ -55,7 +54,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
     ImageButton locationButton;
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
-    private Map<Marker, Integer> mHashMap = new HashMap<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -154,8 +152,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
     }
 
 
-    // Called when the user clicks a marker.
-    /** Called when the user clicks a marker. Shows the stand card with the right info for that stand location */
     /** Called when the user clicks a marker. Shows the stand card with the right info for that stand location */
     @Override
     public boolean onMarkerClick(final Marker marker) {
@@ -168,6 +164,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
                 standFragment.setStandInfo(stand);
             }
         }
+
 
         // Return false to indicate that we have not consumed the event and that we wish
         // for the default behavior to occur (which is for the camera to move such that the
