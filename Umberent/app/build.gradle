@@ -1,9 +1,10 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.danielkarlkvist.umberent"
+        applicationId "com.danielkarlkvist.Umberent"
         minSdkVersion 28
         targetSdkVersion 28
         versionCode 1
@@ -32,4 +33,7 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.github.jd-alexander:library:1.1.0'
 
+    // Firebase stuff
+    implementation 'com.google.firebase:firebase-auth:19.3.1'
+    implementation 'com.google.firebase:firebase-firestore:21.4.3'
 }
