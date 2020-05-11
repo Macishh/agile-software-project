@@ -17,15 +17,15 @@ public class StandFragment {
     private TextView locationTextView;
     private TextView priceTextView;
     private TextView amountTextView;
-
+    View popupView;
+    PopupWindow popupWindow;
 
     //PopupWindow display method
-
     public void showPopupWindow(final View view) {
 
         //Create a View object through inflater
         LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(R.layout.stand_card, null);
+        popupView = inflater.inflate(R.layout.stand_card, null);
 
         //Specify the length and width through constants
         int width = LinearLayout.LayoutParams.MATCH_PARENT;
@@ -35,7 +35,7 @@ public class StandFragment {
         boolean focusable = true;
 
         //Create a window with our parameters
-        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+        popupWindow = new PopupWindow(popupView, width, height, focusable);
 
        //Set the animation of the window
         popupWindow.setAnimationStyle(R.style.AnimationPopUp);
@@ -47,23 +47,26 @@ public class StandFragment {
         initializeViews(popupView);
 
         //Handler for clicking on the inactive zone of the window
-
+/*
         popupView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-
                 //Close the window when clicked
+
                 popupWindow.dismiss();
                 return true;
             }
         });
+*/
+
+
     }
 
      void setStandInfo(IStand stand) {
          locationTextView.setText(stand.getTitle());
          if (stand.getAmountOfUmbrellas() > 1) amountTextView.setText(stand.getAmountOfUmbrellas() + " / " + stand.getCapacity() + " lediga");
          else amountTextView.setText(stand.getAmountOfUmbrellas() + " / " + stand.getCapacity() + " ledig");
-       priceTextView.setText("2kr / min");
+         priceTextView.setText("2kr / min");
 
     }
 

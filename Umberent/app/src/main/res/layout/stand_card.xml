@@ -49,8 +49,8 @@
 
         <ImageView
             android:id="@+id/umbrella_imageView"
-            android:layout_width="175dp"
-            android:layout_height="150dp"
+            android:layout_width="190dp"
+            android:layout_height="165dp"
             android:rotation="10"
             android:src="@drawable/umbrella_realshadow" />
 
@@ -75,7 +75,8 @@
             android:text="Location"
             android:textColor="@color/standText"
             android:textSize="18dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
+
 
         <ImageView
             android:id="@+id/money_imageView"
