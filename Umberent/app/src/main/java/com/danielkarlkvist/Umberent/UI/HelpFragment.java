@@ -1,4 +1,4 @@
-package com.danielkarlkvist.umberent.UI;
+package com.danielkarlkvist.Umberent.UI;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
 
-import com.danielkarlkvist.umberent.R;
+import com.danielkarlkvist.Umberent.R;
 
 /**
  * A simple {@link Fragment} subclass.

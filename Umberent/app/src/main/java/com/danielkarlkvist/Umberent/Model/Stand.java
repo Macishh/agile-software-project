@@ -1,6 +1,6 @@
-package com.danielkarlkvist.umberent.Model;
+package com.danielkarlkvist.Umberent.Model;
 
-import com.danielkarlkvist.umberent.R;
+import com.danielkarlkvist.Umberent.R;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;

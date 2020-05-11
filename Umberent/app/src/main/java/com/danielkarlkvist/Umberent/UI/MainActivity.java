@@ -1,4 +1,4 @@
-package com.danielkarlkvist.umberent.UI;
+package com.danielkarlkvist.Umberent.UI;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -12,8 +12,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.danielkarlkvist.umberent.R;
-import com.danielkarlkvist.umberent.Model.Umberent;
+import com.danielkarlkvist.Umberent.R;
+import com.danielkarlkvist.Umberent.Model.Umberent;
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {

@@ -1,4 +1,4 @@
-package com.danielkarlkvist.umberent.Model;
+package com.danielkarlkvist.Umberent.Model;
 
 public interface IProfile {
 

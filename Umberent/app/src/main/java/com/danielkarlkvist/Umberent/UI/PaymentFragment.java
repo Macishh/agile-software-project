@@ -1,4 +1,4 @@
-package com.danielkarlkvist.umberent.UI;
+package com.danielkarlkvist.Umberent.UI;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,9 +12,9 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
-import com.danielkarlkvist.umberent.Model.IProfile;
-import com.danielkarlkvist.umberent.R;
-import com.danielkarlkvist.umberent.Model.Umberent;
+import com.danielkarlkvist.Umberent.Model.IProfile;
+import com.danielkarlkvist.Umberent.R;
+import com.danielkarlkvist.Umberent.Model.Umberent;
 
 /**
  * A simple {@link Fragment} subclass.

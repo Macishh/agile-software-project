@@ -1,4 +1,4 @@
-package com.danielkarlkvist.umberent;
+package com.danielkarlkvist.Umberent;
 
 import android.content.Context;
 
