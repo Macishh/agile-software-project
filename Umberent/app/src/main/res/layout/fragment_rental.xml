@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:layout_gravity="bottom"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginBottom="4dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="16dp">
+
+        <Chronometer
+            android:id="@+id/rentalTimeElapsedChronometer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:textSize="30sp" />
+
+        <Button
+        android:id="@+id/end_rent_button"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="180dp"
+        android:layout_marginBottom="100dp"
+        android:background="#EFEDED"
+        android:radius="20dp"
+        android:text="Avsluta hyrning"
+        android:textColor="#F44336" />
+
+        <Button
+            android:id="@+id/start_rent_button"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:radius="20dp"
+            android:text="Bekräfta hyrning" />
+
+        <ImageView
+            android:id="@+id/umbrella_imageView2"
+            android:layout_width="175dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="210dp"
+            android:rotation="20"
+            android:src="@drawable/umbrella_real"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/currentPriceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:text="Totalt pris: 0kr"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+    </androidx.cardview.widget.CardView>
+</LinearLayout>
