@@ -1,4 +1,4 @@
-package com.danielkarlkvist.umberent.Model;
+package com.danielkarlkvist.Umberent.Model;
 
 /**
  * The Umbrella class contains all the information of an umbrella.

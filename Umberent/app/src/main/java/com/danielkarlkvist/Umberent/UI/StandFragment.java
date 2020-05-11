@@ -1,13 +1,10 @@
 package com.danielkarlkvist.Umberent.UI;
 
 
-import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.ImageView;
@@ -15,19 +12,15 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import com.danielkarlkvist.umberent.Model.IStand;
+import com.danielkarlkvist.Umberent.Model.IStand;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTabHost;
-import androidx.fragment.app.FragmentTransaction;
 
-import com.danielkarlkvist.umberent.Model.Rental;
-import com.danielkarlkvist.umberent.Model.Umberent;
-import com.danielkarlkvist.umberent.Model.Umbrella;
-import com.danielkarlkvist.umberent.R;
+import com.danielkarlkvist.Umberent.Model.Rental;
+import com.danielkarlkvist.Umberent.Model.Umberent;
+import com.danielkarlkvist.Umberent.Model.Umbrella;
+import com.danielkarlkvist.Umberent.R;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 public class StandFragment extends Fragment {
 
