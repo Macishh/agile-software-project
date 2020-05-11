@@ -15,15 +15,14 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.danielkarlkvist.umberent.Model.IRental;
 import com.danielkarlkvist.umberent.Model.IStand;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTabHost;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.danielkarlkvist.umberent.Model.Rental;
 import com.danielkarlkvist.umberent.Model.Umberent;
-import com.danielkarlkvist.umberent.Model.Umbrella;
 import com.danielkarlkvist.umberent.R;
 
 import java.time.LocalDate;
@@ -39,8 +38,7 @@ public class StandFragment extends Fragment {
     private TextView currentPriceTextView;
     private boolean running = false;
     private Umberent umberent = Umberent.getInstance();
-    private Umbrella umbrella = new Umbrella(1, true);
-    private Rental rental = new Rental(System.currentTimeMillis(), System.currentTimeMillis(),  LocalDate.now(), umberent.getProfile(), umbrella);
+    private IRental rental = umberent.getRental();
     private ImageView umbrella2;
     private long difference;
 
@@ -159,7 +157,7 @@ public class StandFragment extends Fragment {
         rentalTimeElapsedChronometer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
             @Override
             public void onChronometerTick(Chronometer chronometer) {
-                if ((SystemClock.elapsedRealtime() - rentalTimeElapsedChronometer.getBase()) >= 60000) {
+                if ((SystemClock.elapsedRealtime() - rentalTimeElapsedChronometer.getBase()) >= 30000) {
                     currentPriceTextView.setText("Totalt pris: " + calculatePrice(rental.getStartTime(), System.currentTimeMillis()) + "kr");
                 }
             }
@@ -172,11 +170,14 @@ public class StandFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                // Start a new rental
+                rental.setUser(umberent.getProfile());
+                // set umbrella for rental here
 
+
+                // Start a new rental
                 rental.setStartTime(System.currentTimeMillis());
-                //currentPriceTextView.setText("Totalt pris: " + calculatePrice(rental.getStartTime(), System.currentTimeMillis()));
                 System.out.println("Rental start time is: " + rental.getStartTime());
+
                 // start ticking stopwatch
                 startChronometer(view);
 
@@ -191,9 +192,12 @@ public class StandFragment extends Fragment {
             public void onClick(View v) {
 
                 rental.setEndTime(System.currentTimeMillis());
-                calculateRentalTime(rental.getStartTime(), rental.getEndTime());
-                calculatePrice(rental.getStartTime(), rental.getEndTime());
                 rental.setDate(LocalDate.now());
+                rental.setCost((int) calculatePrice(rental.getStartTime(), rental.getEndTime()));
+                rental.setTotalTime(calculateRentalTime(rental.getStartTime(), rental.getEndTime()));
+
+                System.out.println(rental.toString());
+
 
                 // reset chronometer
                 resetChronometer(v);
