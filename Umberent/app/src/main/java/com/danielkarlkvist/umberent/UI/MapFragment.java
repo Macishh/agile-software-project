@@ -24,7 +24,6 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.danielkarlkvist.umberent.Model.IStand;
-import com.danielkarlkvist.umberent.Model.Rental;
 import com.danielkarlkvist.umberent.Model.Umberent;
 import com.danielkarlkvist.umberent.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
