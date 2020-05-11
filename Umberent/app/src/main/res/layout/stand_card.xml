@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/LinearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -14,6 +15,7 @@
         android:layout_marginBottom="4dp"
         app:cardBackgroundColor="#FFFFFF"
         app:cardCornerRadius="16dp">
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -30,9 +32,10 @@
                 android:background="@drawable/shape_pcbutton"
                 android:outlineAmbientShadowColor="#BC1A1A"
                 android:radius="20dp"
+                android:text="Gå vidare för att hyra"
+                android:textColor="#1233D1"
+                android:visibility="visible" />
 
-                android:text="Hyr paraply"
-                android:textColor="@color/standText" />
 
         </LinearLayout>
 
@@ -48,7 +51,7 @@
             android:textSize="16dp"/>
 
         <ImageView
-            android:id="@+id/umbrella_imageView"
+            android:id="@+id/umbrella_imageView2"
             android:layout_width="175dp"
             android:layout_height="150dp"
             android:rotation="10"
@@ -94,5 +97,6 @@
             app:srcCompat="@drawable/umbrella_icon" />
 
     </androidx.cardview.widget.CardView>
+
 </LinearLayout>
 
