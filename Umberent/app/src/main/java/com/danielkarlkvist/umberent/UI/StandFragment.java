@@ -49,14 +49,15 @@ public class StandFragment extends Fragment {
     private TextView locationTextView;
     private TextView priceTextView;
     private TextView amountTextView;
-
+    View popupView;
+    PopupWindow popupWindow;
 
     //PopupWindow display method
     public void showPopupWindow(final View view) {
 
         //Create a View object through inflater
-        final LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
-        final View popupView = inflater.inflate(R.layout.stand_card, null);
+        LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
+        popupView = inflater.inflate(R.layout.stand_card, null);
 
 
         //Specify the length and width through constants
@@ -67,7 +68,7 @@ public class StandFragment extends Fragment {
         boolean focusable = true;
 
         //Create a window with our parameters
-        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+        popupWindow = new PopupWindow(popupView, width, height, focusable);
 
        //Set the animation of the window
         popupWindow.setAnimationStyle(R.style.AnimationPopUp);
@@ -95,15 +96,17 @@ public class StandFragment extends Fragment {
 
 
         //Handler for clicking on the inactive zone of the window
+/*
         popupView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-
                 //Close the window when clicked
+
                 popupWindow.dismiss();
                 return true;
             }
         });
+*/
 
 
     }

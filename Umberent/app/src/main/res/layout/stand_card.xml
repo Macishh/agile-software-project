@@ -51,11 +51,11 @@
             android:textSize="16dp"/>
 
         <ImageView
-            android:id="@+id/umbrella_imageView2"
-            android:layout_width="175dp"
-            android:layout_height="150dp"
+            android:id="@+id/umbrella_imageView"
+            android:layout_width="190dp"
+            android:layout_height="165dp"
             android:rotation="10"
-            android:src="@drawable/umbrella_real" />
+            android:src="@drawable/umbrella_realshadow" />
 
         <TextView
             android:id="@+id/price_textView"
@@ -78,7 +78,8 @@
             android:text="Location"
             android:textColor="@color/standText"
             android:textSize="18dp"
-            android:textStyle="bold" />
+            android:textStyle="bold"/>
+
 
         <ImageView
             android:id="@+id/money_imageView"
