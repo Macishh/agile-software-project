@@ -17,11 +17,12 @@ public class Umberent {
     private Umbrella umbrella;
 
     private boolean userIsLoggedIn = false;
+    private boolean rentalIsActive = false;
 
     private Umberent() {
         profile = new Profile("Eric", "Jonsson", "hej@gmail.com", "123");
-        rental = new Rental(System.currentTimeMillis(), System.currentTimeMillis(), System.currentTimeMillis(), LocalDate.now(), 0, profile, umbrella);
         umbrella = new Umbrella(1, true);
+        rental = new Rental(0, 0, 0, LocalDate.now(), 0, profile, umbrella);
         createStands();
     }
 
@@ -73,8 +74,14 @@ public class Umberent {
         return userIsLoggedIn;
     }
 
+    public boolean rentalIsActive() { return rentalIsActive; }
+
     public void setUserIsLoggedIn(boolean userIsLoggedIn) {
         this.userIsLoggedIn = userIsLoggedIn;
+    }
+
+    public void setRentalIsActive(boolean rentalIsActive) {
+        this.rentalIsActive = rentalIsActive;
     }
 
     public Rental getRental() {

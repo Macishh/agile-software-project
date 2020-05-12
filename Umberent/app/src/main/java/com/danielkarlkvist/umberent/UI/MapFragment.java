@@ -20,7 +20,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.danielkarlkvist.umberent.Model.IStand;
@@ -67,6 +69,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
 
         SupportMapFragment mapFragment = (SupportMapFragment) this.getChildFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
         initializeViews(v);
         initializeButtonListener();
 
@@ -197,6 +200,5 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
             return R.drawable.umberella_icon_not_available;
         }
     }
-
 
 }

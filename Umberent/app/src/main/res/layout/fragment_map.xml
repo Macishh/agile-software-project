@@ -25,7 +25,6 @@
             android:scaleType="fitCenter"
             />
 
-
     </fragment>
 
 </FrameLayout>
