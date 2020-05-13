@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setNavigationListener();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, mapFragment).commit();
 
-        //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DamageReportFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new DamageReportFragment()).commit();
     /*
         if (!umberent.userIsLoggedIn()) {
             Intent intent = new Intent(this, LoginActivity.class);
