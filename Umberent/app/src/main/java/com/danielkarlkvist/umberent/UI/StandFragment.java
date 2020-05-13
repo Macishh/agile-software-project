@@ -1,49 +1,54 @@
 package com.danielkarlkvist.umberent.UI;
 
-
-import android.media.Image;
-import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.danielkarlkvist.umberent.Model.IRental;
 import com.danielkarlkvist.umberent.Model.IStand;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTabHost;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.danielkarlkvist.umberent.Model.Umberent;
 import com.danielkarlkvist.umberent.R;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 public class StandFragment extends Fragment {
 
-
+    //components for Stand Window
     private Button rent_button;
+    private TextView locationTextView;
+    private TextView priceTextView;
+    private TextView amountTextView;
+
+    //components for Rental Window
     private Button end_rent_button;
     private Button start_rent_button;
-    private ImageButton minimizeRentButton;
-    private ImageButton maximizeRentButton;
-    private ImageButton closeRentalButton;
     private Chronometer rentalTimeElapsedChronometer;
+    private ImageButton minimizeRentButton;
+    private ImageButton closeRentalButton;
     private TextView currentPriceTextView;
     private ImageView umbrella2;
 
+    //components for Minimized Rental Window
+    private ImageButton maximizeRentButton;
+
+    //components for Receipt Window
+    private TextView finishedCostTextView;
+    private TextView finishedTimeTextView;
+    private ImageButton closeReceiptButton;
+
+
+    // Umberent instance
     private Umberent umberent = Umberent.getInstance();
     private IRental rental = umberent.getRental();
 
@@ -51,17 +56,11 @@ public class StandFragment extends Fragment {
     private long difference;
     private boolean running = false;
 
-    private TextView locationTextView;
-    private TextView priceTextView;
-    private TextView amountTextView;
-    private TextView finishedCostTextView;
-    private TextView finishedTimeTextView;
-    private ImageButton closeReceiptButton;
 
-    private MapFragment mapFragment = new MapFragment();
 
-    //PopupWindow display method
-    public void showPopupWindow(final View view) {
+
+    //Stand display method
+    public void showStandWindow(final View view) {
 
         //Create a View object through inflater
         final LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
@@ -304,7 +303,7 @@ public class StandFragment extends Fragment {
             //Set the location of the window on the screen
             minimizedRentalWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
 
-            initializeMaximizeRentalViews(minimizedRentalView);
+            initializeMinimizedeRentalViews(minimizedRentalView);
             maximizeRentButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -317,26 +316,9 @@ public class StandFragment extends Fragment {
             }
         }
 
-        private void initializeMaximizeRentalViews(View view) {
+        private void initializeMinimizedeRentalViews(View view) {
             maximizeRentButton = view.findViewById(R.id.maximizeRentButton);
-
-            /* initiates stopwatch and sets in it so every 60 seconds price is updated on view
-            rentalTimeElapsedChronometer = view.findViewById(R.id.rentalTimeElapsedChronometer);
-            rentalTimeElapsedChronometer.setFormat("Hyrningstid: %s");
-            rentalTimeElapsedChronometer.setBase(SystemClock.elapsedRealtime());
-            rentalTimeElapsedChronometer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
-                @Override
-                public void onChronometerTick(Chronometer chronometer) {
-                    if ((SystemClock.elapsedRealtime() - rentalTimeElapsedChronometer.getBase()) >= 30000) {
-                        currentPriceTextView.setText("Totalt pris: " + calculatePrice(rental.getStartTime(), System.currentTimeMillis()) + "kr");
-                    }
-                }
-            });*/
         }
-
-        /*private void showElapedMilliseconds() {
-        long elapsedMillis = SystemClock.elapsedRealtime() - rentalTimeElapsedChronometer.getBase();
-        }*/
 
 
         private void openReceiptView(final View view) {

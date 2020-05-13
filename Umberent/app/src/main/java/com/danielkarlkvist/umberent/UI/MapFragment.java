@@ -170,7 +170,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
 
         for (IStand stand : stands){
             if(key == stand.getID()){
-                standFragment.showPopupWindow(getView());
+                standFragment.showStandWindow(getView());
                 standFragment.setStandInfo(stand);
             }
         }
