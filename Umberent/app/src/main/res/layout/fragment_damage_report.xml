@@ -37,6 +37,7 @@
             android:layout_height="wrap_content"
             android:text="Stativ"/>
         <CheckBox
+            android:id="@+id/damage_stand_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -45,6 +46,7 @@
             android:layout_height="wrap_content"
             android:text="Paraply"/>
         <CheckBox
+            android:id="@+id/damage_umbrella_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -53,6 +55,7 @@
             android:layout_height="wrap_content"
             android:text="Övrigt"/>
         <CheckBox
+            android:id="@+id/damage_other_checkbox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
@@ -94,6 +97,7 @@
 
 
     <EditText
+        android:id="@+id/damage_description_editText"
         style="@android:style/Widget.DeviceDefault.EditText"
         android:layout_width="match_parent"
         android:layout_height="144dp"
@@ -106,6 +110,7 @@
         android:background="@drawable/report_edittext_background" />
 
     <Button
+        android:id="@+id/damage_send_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Send"
