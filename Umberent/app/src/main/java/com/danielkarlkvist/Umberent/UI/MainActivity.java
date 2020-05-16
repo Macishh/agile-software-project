@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.danielkarlkvist.Umberent.Database.DatabaseHandler;
 import com.danielkarlkvist.Umberent.R;
 import com.danielkarlkvist.Umberent.Model.Umberent;
 import com.google.android.material.navigation.NavigationView;

@@ -22,6 +22,11 @@ public class DatabaseHandler {
         return instance;
     }
 
+    /**
+     * Adds all user information to the database.
+     * @param profile
+     * @param password
+     */
     public void addUser(IProfile profile, String password) {
         Map<String, Object> userInformation = new HashMap<>();
         userInformation.put("firstName", profile.getFirstName());
@@ -32,37 +37,47 @@ public class DatabaseHandler {
         database.collection("Users").document(profile.getMail()).set(userInformation);
     }
 
+    /**
+     * Updates the current user's first name to the database.
+     * @param firstName
+     * @param profile
+     */
     public void updateFirstNameTo(String firstName, IProfile profile) {
-        Map<String, Object> userInformation = getUserInformation(profile);
+        Map<String, Object> userInformation = new HashMap<>();
         userInformation.put("firstName", firstName);
 
-        database.collection("Users").document(profile.getMail()).set(userInformation);
+        database.collection("Users").document(profile.getMail()).update(userInformation);
     }
 
+    /**
+     * Updates the current user's last name to the database.
+     * @param lastName
+     * @param profile
+     */
     public void updateLastNameTo(String lastName, IProfile profile) {
-        Map<String, Object> userInformation = getUserInformation(profile);
+        Map<String, Object> userInformation = new HashMap<>();
         userInformation.put("lastName", lastName);
 
-        database.collection("Users").document(profile.getMail()).set(userInformation);
+        database.collection("Users").document(profile.getMail()).update(userInformation);
     }
 
+    /**
+     * Updates the current user's mail to the database.
+     * @param mail
+     * @param profile
+     */
     public void updateMailTo(String mail, IProfile profile) {
-        Map<String, Object> userInformation = getUserInformation(profile);
+        Map<String, Object> userInformation = new HashMap<>();
         userInformation.put("mail", mail);
 
-        database.collection("Users").document(profile.getMail()).set(userInformation);
+        database.collection("Users").document(profile.getMail()).update(userInformation);
     }
 
+    /**
+     * Removes the current user from the database.
+     * @param profile
+     */
     public void removeUser(IProfile profile) {
         database.collection("Users").document(profile.getMail()).delete();
-    }
-
-    private Map<String, Object> getUserInformation(IProfile profile) {
-        Map<String, Object> userInformation = new HashMap<>();
-        userInformation.put("firstName", profile.getFirstName());
-        userInformation.put("lastName", profile.getLastName());
-        userInformation.put("mail", profile.getMail());
-
-        return userInformation;
     }
 }
