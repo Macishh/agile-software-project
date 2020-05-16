@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.danielkarlkvist.Umberent.Database.DatabaseHandler;
 import com.danielkarlkvist.Umberent.R;
 import com.danielkarlkvist.Umberent.Model.Umberent;
 import com.google.android.material.navigation.NavigationView;
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private MapFragment mapFragment = new MapFragment();
 
     private Umberent umberent = Umberent.getInstance();
+    private DatabaseHandler databaseHandler = DatabaseHandler.getInstance();
 
     private ProfileFragment profileFragment = new ProfileFragment();
     private PaymentFragment paymentFragment = new PaymentFragment();
@@ -40,6 +42,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         addToggleForToolbar();
         setNavigationListener();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, mapFragment).commit();
+
+        databaseHandler.addUser(umberent.getProfile(), "testFrånMainActivity");
 
         if (!umberent.userIsLoggedIn()) {
             Intent intent = new Intent(this, LoginActivity.class);
