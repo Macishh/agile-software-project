@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.danielkarlkvist.Umberent.Model.IProfile;
@@ -22,14 +23,13 @@ import com.danielkarlkvist.Umberent.Model.Umberent;
  */
 public class ProfileFragment extends Fragment {
 
-    private Button editButton;
+    private ImageButton editButton;
+    private ImageButton confirmButton;
 
     private TextView fullNameHintTextView;
-    private TextView userNameHintTextView;
     private TextView mailHintTextView;
 
     private TextView fullNameTextView;
-    private TextView userNameTextView;
     private TextView mailTextView;
 
     private Umberent umberent = Umberent.getInstance();
@@ -37,10 +37,9 @@ public class ProfileFragment extends Fragment {
     private EditText firstNameEditText;
     private TextView editLastNameTextView;
     private EditText lastNameEditText;
-    private TextView editUserNameTextView;
-    private EditText userNameEditText;
     private TextView editMailTextView;
     private EditText mailEditText;
+
 
     private IProfile user;
 
@@ -57,7 +56,6 @@ public class ProfileFragment extends Fragment {
         initializeButtonListeners();
 
         fullNameTextView.setText(user.getFullName());
-        userNameTextView.setText(user.getUsername());
         mailTextView.setText(user.getMail());
 
         return v;
@@ -70,10 +68,17 @@ public class ProfileFragment extends Fragment {
                 if (!isInEditingMode) {
                     isInEditingMode = true;
                     editProfile();
-                } else if (!firstNameEditText.getText().toString().equals("")) {
+                }
+            }
+        });
+
+        confirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (isInEditingMode) {
                     isInEditingMode = false;
-                    hideKeyboard(view);
                     saveProfile();
+                    hideKeyboard(view);
                 }
             }
         });
@@ -82,26 +87,22 @@ public class ProfileFragment extends Fragment {
     // finds the correct view in the xml file and connects it to the instance variables
     private void initializeViews(View v) {
         fullNameHintTextView = v.findViewById(R.id.profile_name_hint);
-        userNameHintTextView = v.findViewById(R.id.profile_username_hint);
         mailHintTextView = v.findViewById(R.id.profile_mail_hint);
 
         fullNameTextView = v.findViewById(R.id.profile_name);
-        userNameTextView = v.findViewById(R.id.profile_username);
         mailTextView = v.findViewById(R.id.profile_mail);
 
         editButton = v.findViewById(R.id.profile_edit_button);
+        confirmButton = v.findViewById(R.id.profile_confirm_button);
         editFirstNameTextView = v.findViewById(R.id.profile_edit_firstname_hint);
         firstNameEditText = v.findViewById(R.id.profile_edit_firstname);
         editLastNameTextView = v.findViewById(R.id.profile_edit_lastname_hint);
         lastNameEditText = v.findViewById(R.id.profile_edit_lastname);
-        editUserNameTextView = v.findViewById(R.id.profile_edit_username_hint);
-        userNameEditText = v.findViewById(R.id.profile_edit_username);
         editMailTextView = v.findViewById(R.id.profile_edit_mail_hint);
         mailEditText = v.findViewById(R.id.profile_edit_mail);
     }
 
     private void editProfile() {
-        editButton.setText("Spara");
 
         editUserInformation();
         changeVisibilityForEditMode();
@@ -110,7 +111,6 @@ public class ProfileFragment extends Fragment {
     }
 
     private void saveProfile() {
-        editButton.setText("Ändra");
 
         placeNewUserInformation();
         changeVisibilityForStandardMode();
@@ -119,24 +119,21 @@ public class ProfileFragment extends Fragment {
     private void editUserInformation() {
         firstNameEditText.setText(user.getFirstName());
         lastNameEditText.setText(user.getLastName());
-        userNameEditText.setText(user.getUsername());
         mailEditText.setText(user.getMail());
     }
 
     private void changeVisibilityForEditMode() {
         fullNameHintTextView.setVisibility(View.INVISIBLE);
         fullNameTextView.setVisibility(View.INVISIBLE);
-        userNameHintTextView.setVisibility(View.INVISIBLE);
-        userNameTextView.setVisibility(View.INVISIBLE);
         mailHintTextView.setVisibility(View.INVISIBLE);
         mailTextView.setVisibility(View.INVISIBLE);
+        editButton.setVisibility(View.INVISIBLE);
 
+        confirmButton.setVisibility(View.VISIBLE);
         editFirstNameTextView.setVisibility(View.VISIBLE);
         firstNameEditText.setVisibility(View.VISIBLE);
         editLastNameTextView.setVisibility(View.VISIBLE);
         lastNameEditText.setVisibility(View.VISIBLE);
-        editUserNameTextView.setVisibility(View.VISIBLE);
-        userNameEditText.setVisibility(View.VISIBLE);
         editMailTextView.setVisibility(View.VISIBLE);
         mailEditText.setVisibility(View.VISIBLE);
     }
@@ -144,17 +141,15 @@ public class ProfileFragment extends Fragment {
     private void changeVisibilityForStandardMode() {
         fullNameHintTextView.setVisibility(View.VISIBLE);
         fullNameTextView.setVisibility(View.VISIBLE);
-        userNameHintTextView.setVisibility(View.VISIBLE);
-        userNameTextView.setVisibility(View.VISIBLE);
         mailHintTextView.setVisibility(View.VISIBLE);
         mailTextView.setVisibility(View.VISIBLE);
+        editButton.setVisibility(View.VISIBLE);
 
+        confirmButton.setVisibility(View.INVISIBLE);
         editFirstNameTextView.setVisibility(View.INVISIBLE);
         firstNameEditText.setVisibility(View.INVISIBLE);
         editLastNameTextView.setVisibility(View.INVISIBLE);
         lastNameEditText.setVisibility(View.INVISIBLE);
-        editUserNameTextView.setVisibility(View.INVISIBLE);
-        userNameEditText.setVisibility(View.INVISIBLE);
         editMailTextView.setVisibility(View.INVISIBLE);
         mailEditText.setVisibility(View.INVISIBLE);
     }
@@ -169,8 +164,6 @@ public class ProfileFragment extends Fragment {
         user.setLastName(lastNameEditText.getText().toString());
         fullNameTextView.setText(user.getFullName());
 
-        user.setUsername(userNameEditText.getText().toString());
-        userNameTextView.setText(user.getUsername());
         user.setMail(mailEditText.getText().toString());
         mailTextView.setText(user.getMail());
     }

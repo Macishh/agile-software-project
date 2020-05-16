@@ -1,38 +1,33 @@
 package com.danielkarlkvist.Umberent.Model;
 
+/**
+ * The IProfile interface defines the method that should be able to run of a Profile outside of the model.
+ */
 public interface IProfile {
 
     String getFullName();
-
-    String getMail();
-
-    String getUsername();
 
     String getFirstName();
 
     String getLastName();
 
+    String getMail();
+
     String getCardNumber();
 
     String getExpirationDate();
 
-    String getCvc();
+    String getCVC();
 
     void setFirstName(String firstName);
 
     void setLastName(String lastName);
 
-    void setUsername(String username);
-
-    void setMail(String username);
-
     void setCardNumber(String cardNumber);
 
     void setExpirationDate(String expirationDate);
 
-    void setCvc(String cvc);
+    void setCVC(String cvc);
 
-
-
-
+    void setMail(String mail);
 }

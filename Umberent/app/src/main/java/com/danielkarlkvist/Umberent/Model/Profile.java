@@ -1,10 +1,12 @@
 package com.danielkarlkvist.Umberent.Model;
 
-public class Profile implements IProfile {
+/**
+ * The Profile class contains the information for the user of the app.
+ */
+class Profile implements IProfile {
 
     private String firstName;
     private String lastName;
-    private String username;
     private String mail;
     private String password;
 
@@ -12,10 +14,17 @@ public class Profile implements IProfile {
     private String expirationDate;
     private String cvc;
 
-    public Profile(String firstName, String lastName, String username, String mail, String password, String cardNumber, String expirationDate, String cvc) {
+    public Profile(String firstName, String lastName, String mail, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.username = username;
+        this.mail = mail;
+        this.password = password;
+    }
+
+    // Possibly remove?
+    public Profile(String firstName, String lastName, String mail, String password, String cardNumber, String expirationDate, String cvc) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.mail = mail;
         this.password = password;
         this.cardNumber = cardNumber;
@@ -27,17 +36,18 @@ public class Profile implements IProfile {
         return firstName + " " + lastName;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
     public String getMail() {
         return mail;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
     public String getCardNumber() {
         return cardNumber;
     }
@@ -46,12 +56,8 @@ public class Profile implements IProfile {
         return expirationDate;
     }
 
-    public String getCvc() {
+    public String getCVC() {
         return cvc;
-    }
-
-    public String getLastName() {
-        return lastName;
     }
 
     @Override
@@ -59,16 +65,9 @@ public class Profile implements IProfile {
         this.firstName = firstName;
     }
 
+    @Override
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
     }
 
     @Override
@@ -82,7 +81,11 @@ public class Profile implements IProfile {
     }
 
     @Override
-    public void setCvc(String cvc) {
+    public void setCVC(String cvc) {
         this.cvc = cvc;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
     }
 }
