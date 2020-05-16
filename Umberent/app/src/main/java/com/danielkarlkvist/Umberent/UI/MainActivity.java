@@ -41,9 +41,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         addToggleForToolbar();
         setNavigationListener();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, mapFragment).commit();
-
-        databaseHandler.addUser(umberent.getProfile(), "testFrånMainActivity");
-
+        
         if (!umberent.userIsLoggedIn()) {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);

@@ -11,6 +11,7 @@ public class DatabaseHandler {
     private FirebaseFirestore database = FirebaseFirestore.getInstance();
 
     private DatabaseHandler() {
+
     }
 
     public static DatabaseHandler getInstance() {
@@ -22,12 +23,46 @@ public class DatabaseHandler {
     }
 
     public void addUser(IProfile profile, String password) {
-        Map<String, Object> user = new HashMap<>();
-        user.put("firstName", profile.getFirstName());
-        user.put("lastName", profile.getLastName());
-        user.put("mail", profile.getMail());
-        user.put("password", password);
+        Map<String, Object> userInformation = new HashMap<>();
+        userInformation.put("firstName", profile.getFirstName());
+        userInformation.put("lastName", profile.getLastName());
+        userInformation.put("mail", profile.getMail());
+        userInformation.put("password", password);
 
-        database.collection("Users").document(profile.getMail()).set(user);
+        database.collection("Users").document(profile.getMail()).set(userInformation);
+    }
+
+    public void updateFirstNameTo(String firstName, IProfile profile) {
+        Map<String, Object> userInformation = getUserInformation(profile);
+        userInformation.put("firstName", firstName);
+
+        database.collection("Users").document(profile.getMail()).set(userInformation);
+    }
+
+    public void updateLastNameTo(String lastName, IProfile profile) {
+        Map<String, Object> userInformation = getUserInformation(profile);
+        userInformation.put("lastName", lastName);
+
+        database.collection("Users").document(profile.getMail()).set(userInformation);
+    }
+
+    public void updateMailTo(String mail, IProfile profile) {
+        Map<String, Object> userInformation = getUserInformation(profile);
+        userInformation.put("mail", mail);
+
+        database.collection("Users").document(profile.getMail()).set(userInformation);
+    }
+
+    public void removeUser(IProfile profile) {
+        database.collection("Users").document(profile.getMail()).delete();
+    }
+
+    private Map<String, Object> getUserInformation(IProfile profile) {
+        Map<String, Object> userInformation = new HashMap<>();
+        userInformation.put("firstName", profile.getFirstName());
+        userInformation.put("lastName", profile.getLastName());
+        userInformation.put("mail", profile.getMail());
+
+        return userInformation;
     }
 }
