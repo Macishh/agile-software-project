@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="230dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="16dp">
+
+        <ImageButton
+            android:id="@+id/closeReceiptButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="350dp"
+            android:background="#FFFFFF"
+            app:srcCompat="@android:drawable/btn_dialog" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tack för din hyrning!"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/umbrella_imageView2"
+            android:layout_width="175dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginTop="300dp"
+            android:rotation="10"
+            android:src="@drawable/umbrella_real" />
+
+        <TextView
+            android:id="@+id/finishedCostTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:text="Totalt pris:"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/finishedtTimeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="160dp"
+            android:text="Total tid:"
+            android:textSize="30sp" />
+
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

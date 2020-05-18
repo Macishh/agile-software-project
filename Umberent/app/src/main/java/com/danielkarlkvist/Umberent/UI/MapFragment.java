@@ -16,10 +16,13 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
-import com.danielkarlkvist.Umberent.Model.IStand;
-import com.danielkarlkvist.Umberent.Model.Umberent;
+
+import com.danielkarlkvist.umberent.Model.IStand;
+import com.danielkarlkvist.umberent.Model.Umberent;
 import com.danielkarlkvist.Umberent.R;
 import com.directions.route.Route;
 import com.directions.route.RouteException;
@@ -68,6 +71,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
 
         SupportMapFragment mapFragment = (SupportMapFragment) this.getChildFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
         initializeViews(v);
         initializeButtonListener();
 

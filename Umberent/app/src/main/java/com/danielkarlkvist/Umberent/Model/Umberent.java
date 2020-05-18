@@ -1,5 +1,6 @@
 package com.danielkarlkvist.Umberent.Model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -12,11 +13,16 @@ public class Umberent {
 
     private Profile profile;
     private List<IStand> stands = new ArrayList<>();
+    private Rental rental;
+    private Umbrella umbrella;
 
     private boolean userIsLoggedIn = false;
+    private boolean rentalIsActive = false;
 
     private Umberent() {
         profile = new Profile("Eric", "Jonsson", "hej@gmail.com", "123");
+        umbrella = new Umbrella(1, true);
+        rental = new Rental(0, 0, 0, LocalDate.now(), 0, profile, umbrella);
         createStands();
     }
 
@@ -68,7 +74,21 @@ public class Umberent {
         return userIsLoggedIn;
     }
 
+    public boolean rentalIsActive() { return rentalIsActive; }
+
     public void setUserIsLoggedIn(boolean userIsLoggedIn) {
         this.userIsLoggedIn = userIsLoggedIn;
+    }
+
+    public void setRentalIsActive(boolean rentalIsActive) {
+        this.rentalIsActive = rentalIsActive;
+    }
+
+    public Rental getRental() {
+        return rental;
+    }
+
+    public void setRental(Rental rental) {
+        this.rental = rental;
     }
 }
