@@ -18,9 +18,9 @@ class Rental implements IRental{
     private Profile user;
     private Umbrella umbrella;
 
-    Rental(long startDate, long endDate, long totalTime, LocalDate date, int cost, Profile user, Umbrella umbrella) {
-        this.startTime = startDate;
-        this.endTime = endDate;
+    Rental(long startTime, long endTime, long totalTime, LocalDate date, int cost, Profile user, Umbrella umbrella) {
+        this.startTime = startTime;
+        this.endTime = endTime;
         this.totalTime = totalTime;
         this.date = date;
         this.cost = cost;

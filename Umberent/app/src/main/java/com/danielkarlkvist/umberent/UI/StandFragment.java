@@ -22,6 +22,10 @@ import com.danielkarlkvist.umberent.R;
 
 import java.time.LocalDate;
 
+/**
+ * Fragment that handles popup-windows for opening stands, also handles the rental process
+ */
+
 public class StandFragment extends Fragment {
 
     //components for Stand Window
@@ -57,9 +61,10 @@ public class StandFragment extends Fragment {
     private boolean running = false;
 
 
-
-
-    //Stand display method
+    /**
+     * Method for opening a stand window
+     * @param view
+     */
     public void showStandWindow(final View view) {
 
         //Create a View object through inflater
