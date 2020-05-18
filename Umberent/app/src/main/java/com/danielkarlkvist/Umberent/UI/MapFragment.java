@@ -21,8 +21,8 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.danielkarlkvist.umberent.Model.IStand;
-import com.danielkarlkvist.umberent.Model.Umberent;
+import com.danielkarlkvist.Umberent.Model.IStand;
+import com.danielkarlkvist.Umberent.Model.Umberent;
 import com.danielkarlkvist.Umberent.R;
 import com.directions.route.Route;
 import com.directions.route.RouteException;
@@ -191,7 +191,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
 
                 showDistanceToStand(routing, marker);
 
-                standFragment.showPopupWindow(getView());
+                standFragment.showStandWindow(getView());
                 standFragment.setStandInfo(stand);
                 initializeViewListener(marker);
             }

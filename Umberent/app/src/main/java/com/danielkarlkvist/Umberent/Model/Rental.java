@@ -2,12 +2,14 @@ package com.danielkarlkvist.Umberent.Model;
 
 
 
+import com.danielkarlkvist.Umberent.Model.IUmbrella;
+
 import java.time.LocalDate;
 
 /**
  * The Rental class contains all the information for when a user wants to rent an umbrella.
  */
-class Rental implements IRental{
+class Rental implements IRental {
     private long startTime;
     private long endTime;
     private long totalTime;

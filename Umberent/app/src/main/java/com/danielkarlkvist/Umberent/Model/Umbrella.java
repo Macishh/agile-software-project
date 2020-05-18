@@ -3,7 +3,7 @@ package com.danielkarlkvist.Umberent.Model;
 /**
  * The Umbrella class contains all the information of an umbrella.
  */
-class Umbrella {
+class Umbrella implements IUmbrella {
     private int id;
     private boolean isAvailable;
 
@@ -12,7 +12,8 @@ class Umbrella {
         this.isAvailable = isAvailable;
     }
 
-    public int getID() {
+    @Override
+    public int getId() {
         return id;
     }
 

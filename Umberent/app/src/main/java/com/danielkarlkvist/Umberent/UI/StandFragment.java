@@ -3,6 +3,7 @@ package com.danielkarlkvist.Umberent.UI;
 import android.os.SystemClock;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Chronometer;
@@ -12,12 +13,12 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import com.danielkarlkvist.umberent.Model.IRental;
-import com.danielkarlkvist.umberent.Model.IStand;
+import com.danielkarlkvist.Umberent.Model.IRental;
+import com.danielkarlkvist.Umberent.Model.IStand;
 import androidx.fragment.app.Fragment;
 
-import com.danielkarlkvist.umberent.Model.Umberent;
-import com.danielkarlkvist.umberent.R;
+import com.danielkarlkvist.Umberent.Model.Umberent;
+import com.danielkarlkvist.Umberent.R;
 
 import java.time.LocalDate;
 
@@ -58,6 +59,8 @@ public class StandFragment extends Fragment {
 
     private long difference;
     private boolean running = false;
+    PopupWindow popupWindow;
+    View popupView;
 
 
     /**
@@ -106,7 +109,7 @@ public class StandFragment extends Fragment {
         });
 
         //Handler for clicking on the inactive zone of the window
-/*
+
         popupView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -116,7 +119,6 @@ public class StandFragment extends Fragment {
                 return true;
             }
         });
-*/
 
 
     }

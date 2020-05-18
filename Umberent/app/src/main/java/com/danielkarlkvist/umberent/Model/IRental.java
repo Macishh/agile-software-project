@@ -1,4 +1,6 @@
-package com.danielkarlkvist.umberent.Model;
+package com.danielkarlkvist.Umberent.Model;
+
+import com.danielkarlkvist.Umberent.Model.IProfile;
 
 import java.time.LocalDate;
 
