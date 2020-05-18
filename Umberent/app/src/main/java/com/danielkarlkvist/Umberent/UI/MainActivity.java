@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         addToggleForToolbar();
         setNavigationListener();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, mapFragment).commit();
+        toolbar.setNavigationIcon(R.drawable.actionbar_icon);
     /*
         if (!umberent.userIsLoggedIn()) {
             Intent intent = new Intent(this, LoginActivity.class);
