@@ -1,7 +1,5 @@
 package com.danielkarlkvist.Umberent.Model;
 
-import com.danielkarlkvist.Umberent.Model.IProfile;
-
 import java.time.LocalDate;
 
 /**
@@ -12,6 +10,8 @@ public interface IRental {
      long getStartTime();
      long getEndTime();
      long getTotalTime();
+     long calculateRentalTime(long startTime, long endTime);
+     long calculatePrice(long startTime, long endTime);
      LocalDate getDate();
      int getCost();
      Profile getUser();
