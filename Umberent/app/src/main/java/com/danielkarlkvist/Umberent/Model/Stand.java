@@ -38,6 +38,8 @@ class Stand implements IStand {
         return umbrellas;
     }
 
+    public Umbrella getLastUmbrella() {return umbrellas.get(umbrellas.size() - 1); }
+
     /**
      * Returns the amount of umbrellas in the list.
      * @return Returns the amount of umbrellas in the list.
