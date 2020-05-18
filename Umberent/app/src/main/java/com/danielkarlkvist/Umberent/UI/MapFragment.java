@@ -16,8 +16,11 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
+
 import com.danielkarlkvist.Umberent.Model.IStand;
 import com.danielkarlkvist.Umberent.Model.Umberent;
 import com.danielkarlkvist.Umberent.R;
@@ -68,6 +71,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
 
         SupportMapFragment mapFragment = (SupportMapFragment) this.getChildFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
         initializeViews(v);
         initializeButtonListener();
 
@@ -187,7 +191,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
 
                 showDistanceToStand(routing, marker);
 
-                standFragment.showPopupWindow(getView());
+                standFragment.showStandWindow(getView());
                 standFragment.setStandInfo(stand);
                 initializeViewListener(marker);
             }
