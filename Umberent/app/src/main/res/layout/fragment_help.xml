@@ -212,8 +212,8 @@
 
                 </RelativeLayout>
 
-                <TextView
-                    android:id="@+id/appBugReportTextView"
+                <Button
+                    android:id="@+id/appBugReportButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="12dp"
@@ -221,7 +221,10 @@
                     android:text="Rapportera buggar i appen"
                     android:textColor="#0077C2"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:background="#FFFFFF"
+                    android:gravity="center|left"
+                    android:textAllCaps="false"/>
 
                 <View
                     android:id="@+id/appBugDivider"
@@ -230,16 +233,19 @@
                     android:layout_marginHorizontal="12dp"
                     android:background="#000000" />
 
-                <TextView
-                    android:id="@+id/umbrellaBugReportTextView"
+                <Button
+                    android:id="@+id/umbrellaBugReportButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="12dp"
                     android:layout_marginVertical="5dp"
-                    android:text="Rapportera buggar i paraplyerna"
+                    android:text="Rapportera buggar med paraplyerna"
                     android:textColor="#0077C2"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:background="#FFFFFF"
+                    android:gravity="center|left"
+                    android:textAllCaps="false"/>
 
                 <View
                     android:id="@+id/umbrellaBugDivider"

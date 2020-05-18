@@ -2,22 +2,28 @@ package com.danielkarlkvist.Umberent.Model;
 
 
 
+import com.danielkarlkvist.Umberent.Model.IUmbrella;
+
 import java.time.LocalDate;
 
 /**
  * The Rental class contains all the information for when a user wants to rent an umbrella.
  */
-public class Rental {
+class Rental implements IRental {
     private long startTime;
     private long endTime;
+    private long totalTime;
     private LocalDate date;
     private int cost;
     private Profile user;
     private Umbrella umbrella;
 
-    public Rental(long startDate, long endDate, LocalDate date, Profile user, Umbrella umbrella) {
-        this.startTime = startDate;
-        this.endTime = endDate;
+    Rental(long startTime, long endTime, long totalTime, LocalDate date, int cost, Profile user, Umbrella umbrella) {
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.totalTime = totalTime;
+        this.date = date;
+        this.cost = cost;
         this.user = user;
         this.umbrella = umbrella;
     }
@@ -30,7 +36,13 @@ public class Rental {
         return endTime;
     }
 
-    public  LocalDate getDate() {return  date;}
+    public long getTotalTime() {
+        return totalTime;
+    }
+
+    public  LocalDate getDate() {
+        return  date;
+    }
 
     public int getCost() {
         return cost;
@@ -52,6 +64,10 @@ public class Rental {
         this.endTime = endTime;
     }
 
+    public void setTotalTime(long totalTime) {
+        this.totalTime = totalTime;
+    }
+
     public void setDate (LocalDate date) {
         this.date = date;
     }
@@ -66,5 +82,10 @@ public class Rental {
 
     public void setUmbrella(Umbrella umbrella) {
         this.umbrella = umbrella;
+    }
+
+    @Override
+    public String toString() {
+        return "Rental is: " + this.startTime + " " +  this.endTime + " " + this.totalTime + " " + this.date.getDayOfMonth() + " " + this.cost + " " + this.user.toString() + " " + this.umbrella;
     }
 }
