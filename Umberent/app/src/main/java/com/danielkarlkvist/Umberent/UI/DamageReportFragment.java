@@ -18,16 +18,12 @@ import com.danielkarlkvist.Umberent.R;
  */
 public class DamageReportFragment extends Fragment {
 
-    CheckBox checkBoxStand;
-    CheckBox checkBoxUmberlla;
-    CheckBox checkBoxOther;
+    private EditText editTextSubject;
+    private EditText editTextStand;
+    private EditText editTextUmbrella;
+    private EditText editTextDescription;
 
-    EditText editTextSubject;
-    EditText editTextStand;
-    EditText editTextUmbrella;
-    EditText editTextDescription;
-
-    Button buttonSend;
+    private Button buttonSend;
 
 
     public DamageReportFragment() {
@@ -70,9 +66,6 @@ public class DamageReportFragment extends Fragment {
     }
 
     private void initializeViews(View v) {
-        checkBoxStand = v.findViewById(R.id.damage_stand_checkbox);
-        checkBoxUmberlla = v.findViewById(R.id.damage_umbrella_checkbox);
-        checkBoxOther = v.findViewById(R.id.damage_other_checkbox);
 
         editTextSubject = v.findViewById(R.id.damage_subject_editText);
         editTextStand = v.findViewById(R.id.damage_stand_editText);
@@ -88,6 +81,7 @@ public class DamageReportFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 sendMail();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HelpFragment()).commit();
             }
         });
     }
