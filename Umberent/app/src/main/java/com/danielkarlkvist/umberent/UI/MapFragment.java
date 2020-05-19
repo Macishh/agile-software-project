@@ -217,12 +217,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
 
     private void addMarker(IStand stand) {
         Marker m = googleMap.addMarker((new MarkerOptions()
-                .icon(BitmapDescriptorFactory.fromResource(getStandIcon(stand)))
+                .icon(BitmapDescriptorFactory.fromResource(stand.getStandIcon()))
                 .position(stand.getLatLng())));
         mHashMap.put(m, stand.getID());
     }
 
-    private int getStandIcon(IStand stand) {
+   /* public int getStandIcon(IStand stand) {
         double availability = (double) stand.getAmountOfUmbrellas() / (double) stand.getCapacity();
 
         if (availability >= 0.65) {
@@ -232,7 +232,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         } else {
             return R.drawable.umberella_icon_not_available;
         }
-    }
+    }*/
 
     @Override
     public void onRoutingFailure(RouteException e) {

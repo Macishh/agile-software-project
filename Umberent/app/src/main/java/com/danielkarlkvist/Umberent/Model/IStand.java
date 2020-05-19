@@ -21,4 +21,6 @@ public interface IStand {
     int getCapacity();
 
     LatLng getLatLng();
+
+    int getStandIcon();
 }

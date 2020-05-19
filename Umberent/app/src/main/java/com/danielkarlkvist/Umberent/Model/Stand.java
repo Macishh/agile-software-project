@@ -1,5 +1,6 @@
 package com.danielkarlkvist.Umberent.Model;
 
+import com.danielkarlkvist.Umberent.R;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
@@ -54,6 +55,18 @@ class Stand implements IStand {
 
     public LatLng getLatLng(){
         return new LatLng(longitude, latitude);
+    }
+
+    public int getStandIcon() {
+        double availability = (double) getAmountOfUmbrellas() / (double) getCapacity();
+
+        if (availability >= 0.65) {
+            return R.drawable.umberella_icon_available;
+        } else if (availability > 0) {
+            return R.drawable.umberella_icon_few_available;
+        } else {
+            return R.drawable.umberella_icon_not_available;
+        }
     }
 
     /**

@@ -61,8 +61,10 @@ public class StandFragment extends Fragment {
 
     private long difference;
     private boolean running = false;
-    PopupWindow popupWindow;
-    View popupView;
+     PopupWindow popupWindow;
+     View popupView;
+
+    private MapFragment mapFragment;
 
 
     /**
@@ -252,6 +254,8 @@ public class StandFragment extends Fragment {
 
                 // set umbrella for rental
                 rental.setUmbrella(stand.getLastUmbrella());
+                stand.getUmbrellas().remove(stand.getUmbrellas().size() - 1);
+                stand.getStandIcon();
 
                 // set start time for rental
                 rental.setStartTime(System.currentTimeMillis());
