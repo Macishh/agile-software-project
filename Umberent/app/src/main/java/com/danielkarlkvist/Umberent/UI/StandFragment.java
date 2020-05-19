@@ -15,12 +15,14 @@ import android.widget.TextView;
 
 import com.danielkarlkvist.Umberent.Model.IRental;
 import com.danielkarlkvist.Umberent.Model.IStand;
+
 import androidx.fragment.app.Fragment;
 
 import com.danielkarlkvist.Umberent.Model.Umberent;
 import com.danielkarlkvist.Umberent.R;
 
 import java.time.LocalDate;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Fragment that handles popup-windows for opening stands, also handles the rental process
@@ -41,7 +43,9 @@ public class StandFragment extends Fragment {
     private ImageButton minimizeRentButton;
     private ImageButton closeRentalButton;
     private TextView currentPriceTextView;
-    private ImageView umbrella2;
+    private TextView confirmRental;
+
+    private ImageView umbrella;
 
     //components for Minimized Rental Window
     private ImageButton maximizeRentButton;
@@ -65,6 +69,7 @@ public class StandFragment extends Fragment {
 
     /**
      * Method for opening a stand window
+     *
      * @param view
      */
     public void showStandWindow(final View view) {
@@ -84,14 +89,14 @@ public class StandFragment extends Fragment {
         //Create a window with our parameters
         popupWindow = new PopupWindow(popupView, width, height, focusable);
 
-       //Set the animation of the window
+        //Set the animation of the window
         popupWindow.setAnimationStyle(R.style.AnimationPopUp);
 
         //Set the location of the window on the screen
         popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
 
         //Initialize the elements of our window, install the handler
-        initializeViews(popupView);
+        initializeStandView(popupView);
 
         // initialize rent button
         rent_button = popupView.findViewById(R.id.rent_button);
@@ -123,16 +128,16 @@ public class StandFragment extends Fragment {
 
     }
 
-     void setStandInfo(IStand stand) {
-         locationTextView.setText(stand.getTitle());
-         if (stand.getAmountOfUmbrellas() > 1)
-             amountTextView.setText(stand.getAmountOfUmbrellas() + " / " + stand.getCapacity() + " lediga");
-         else
-             amountTextView.setText(stand.getAmountOfUmbrellas() + " / " + stand.getCapacity() + " ledig");
-         priceTextView.setText("2kr / min");
-     }
+    void setStandInfo(IStand stand) {
+        locationTextView.setText(stand.getTitle());
+        if (stand.getAmountOfUmbrellas() > 1)
+            amountTextView.setText(stand.getAmountOfUmbrellas() + " / " + stand.getCapacity() + " lediga");
+        else
+            amountTextView.setText(stand.getAmountOfUmbrellas() + " / " + stand.getCapacity() + " ledig");
+        priceTextView.setText("2kr + 2kr / min");
+    }
 
-    private void initializeViews(View v) {
+    private void initializeStandView(View v) {
         locationTextView = v.findViewById(R.id.location_textView);
         priceTextView = v.findViewById(R.id.price_textView);
         amountTextView = v.findViewById(R.id.amount_textView);
@@ -140,92 +145,79 @@ public class StandFragment extends Fragment {
 
     private void openRentalWindow(final View view) {
 
-            LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
-            final View rentalView = inflater.inflate(R.layout.fragment_rental, null);
+        LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
+        final View rentalView = inflater.inflate(R.layout.fragment_rental, null);
 
-            int width = LinearLayout.LayoutParams.MATCH_PARENT;
-            int height = LinearLayout.LayoutParams.MATCH_PARENT;
+        int width = LinearLayout.LayoutParams.MATCH_PARENT;
+        int height = LinearLayout.LayoutParams.MATCH_PARENT;
 
-            boolean focusable = true;
+        boolean focusable = true;
 
-            //Create a window with our parameters
-            final PopupWindow rentalWindow = new PopupWindow(rentalView, width, height, focusable);
+        //Create a window with our parameters
+        final PopupWindow rentalWindow = new PopupWindow(rentalView, width, height, focusable);
 
+        //Set the animation of the window
+        rentalWindow.setAnimationStyle(R.style.AnimationPopUp);
 
-            //Set the animation of the window
-            rentalWindow.setAnimationStyle(R.style.AnimationPopUp);
+        //Set the location of the window on the screen
+        rentalWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
 
-            //Set the location of the window on the screen
-            rentalWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+        initializeRentalViews(rentalView);
+        initializeRentalButtonListeners();
 
+        end_rent_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-            initializeRentalViews(rentalView);
-            initializeRentalButtonListeners();
-            minimizeRentButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+                umberent.setRentalIsActive(false);
+                rental.setEndTime(System.currentTimeMillis());
+                rental.setDate(LocalDate.now());
+                rental.setCost((int) calculatePrice(rental.getStartTime(), rental.getEndTime()));
+                rental.setTotalTime(calculateRentalTime(rental.getStartTime(), rental.getEndTime()));
+
+                System.out.println(rental.toString());
+
+                // reset chronometer
+                resetChronometer(v);
+
+                //"Open receipt"-statement here
+                if (!umberent.rentalIsActive()) {
                     rentalWindow.dismiss();
-                    openMinimizedRentalWindow(view);
+                    openReceiptView(v);
                 }
-            });
-
-            end_rent_button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    umberent.setRentalIsActive(false);
-
-                    rental.setEndTime(System.currentTimeMillis());
-                    rental.setDate(LocalDate.now());
-                    rental.setCost((int) calculatePrice(rental.getStartTime(), rental.getEndTime()));
-                    rental.setTotalTime(calculateRentalTime(rental.getStartTime(), rental.getEndTime()));
-
-                    System.out.println(rental.toString());
-
-                    // reset chronometer
-                    resetChronometer(v);
-
-                    //"Open receipt"-statement here
-                    if (!umberent.rentalIsActive()) {
-                        rentalWindow.dismiss();
-                        openReceiptView(v);
-                    }
-                }
-            });
-
-            closeRentalButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    rentalWindow.dismiss();
-                }
-            });
+            }
+        });
 
     }
 
     private void initializeRentalViews(View view) {
         start_rent_button = view.findViewById(R.id.start_rent_button);
+        end_rent_button = view.findViewById(R.id.end_rent_button);
+        confirmRental = view.findViewById(R.id.confirmRental);
+        umbrella = view.findViewById(R.id.umbrella_imageView2);
+        currentPriceTextView = view.findViewById(R.id.currentPriceTextView);
+        //closeRentalButton = view.findViewById(R.id.closeRentalButton);
+        rentalTimeElapsedChronometer = view.findViewById(R.id.rentalTimeElapsedChronometer);
+
         if (!umberent.rentalIsActive()) {
             start_rent_button.setVisibility(View.VISIBLE);
+            end_rent_button.setText("Avbryt");
+            currentPriceTextView.setVisibility(View.INVISIBLE);
+            rentalTimeElapsedChronometer.setVisibility(View.INVISIBLE);
         }
-        end_rent_button = view.findViewById(R.id.end_rent_button);
-        umbrella2 = view.findViewById(R.id.umbrella_imageView2);
-        currentPriceTextView = view.findViewById(R.id.currentPriceTextView);
-        minimizeRentButton = view.findViewById(R.id.minimizeRentButton);
-        closeRentalButton = view.findViewById(R.id.closeRentalButton);
+
         if (umberent.rentalIsActive()) {
             closeRentalButton.setVisibility(View.INVISIBLE);
             minimizeRentButton.setVisibility(View.VISIBLE);
-        } 
+
+        }
         // initiates stopwatch and sets in it so every 60 seconds price is updated on view
-        rentalTimeElapsedChronometer = view.findViewById(R.id.rentalTimeElapsedChronometer);
         rentalTimeElapsedChronometer.setFormat("Hyrningstid: %s");
         rentalTimeElapsedChronometer.setBase(SystemClock.elapsedRealtime());
         rentalTimeElapsedChronometer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
             @Override
             public void onChronometerTick(Chronometer chronometer) {
-                if ((SystemClock.elapsedRealtime() - rentalTimeElapsedChronometer.getBase()) >= 30000) {
-                    currentPriceTextView.setText("Totalt pris: " + calculatePrice(rental.getStartTime(), System.currentTimeMillis()) + "kr");
-                }
+                currentPriceTextView.setText("Aktuellt pris: " + calculatePrice(rental.getStartTime(), System.currentTimeMillis()) + "kr");
             }
         });
     }
@@ -249,9 +241,11 @@ public class StandFragment extends Fragment {
                 startChronometer(view);
 
                 start_rent_button.setVisibility(View.INVISIBLE);
-                umbrella2.setVisibility(View.VISIBLE);
-                closeRentalButton.setVisibility(View.INVISIBLE);
-                minimizeRentButton.setVisibility(View.VISIBLE);
+                rentalTimeElapsedChronometer.setVisibility(View.VISIBLE);
+                currentPriceTextView.setVisibility(View.VISIBLE);
+                end_rent_button.setText("Avsluta hyrning");
+                confirmRental.setVisibility(View.INVISIBLE);
+
             }
         });
     }
@@ -259,16 +253,16 @@ public class StandFragment extends Fragment {
     private long calculateRentalTime(long startTime, long endTime) {
 
         difference = endTime - startTime;
-        System.out.println("Time of rental: " + difference/1000 + " seconds");
+        System.out.println("Time of rental: " + difference / 1000 + " seconds");
         return difference;
     }
 
-    private long calculatePrice(long startTime, long endTime){
+    private long calculatePrice(long startTime, long endTime) {
 
         difference = endTime - startTime;
-        long totalCost = (2*((difference)/1000))/60;
+        long totalCost = (2 * ((difference) / 1000)) / 60;
         System.out.println("Total cost is: " + totalCost + "kr");
-        return totalCost;
+        return totalCost + 2;
 
     }
 
@@ -276,8 +270,8 @@ public class StandFragment extends Fragment {
     private void startChronometer(View view) {
         if (!running) {
             rentalTimeElapsedChronometer.setBase(SystemClock.elapsedRealtime());
-             rentalTimeElapsedChronometer.start();
-             running = true;
+            rentalTimeElapsedChronometer.start();
+            running = true;
         }
     }
 
@@ -289,80 +283,59 @@ public class StandFragment extends Fragment {
         }
     }
 
-    private void openMinimizedRentalWindow(final View view) {
+    private void openReceiptView(final View view) {
+        LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
+        View receiptView = inflater.inflate(R.layout.receipt_for_rental, null);
 
-        if (umberent.rentalIsActive()) {
+        int width = LinearLayout.LayoutParams.MATCH_PARENT;
+        int height = LinearLayout.LayoutParams.MATCH_PARENT;
 
-            LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
-            View minimizedRentalView = inflater.inflate(R.layout.fragment_minimized_rental, null);
+        boolean focusable = true;
 
-            int width = LinearLayout.LayoutParams.MATCH_PARENT;
-            int height = LinearLayout.LayoutParams.MATCH_PARENT;
-
-            boolean focusable = true;
-
-            //Create a window with our parameters
-            final PopupWindow minimizedRentalWindow = new PopupWindow(minimizedRentalView, width, height, focusable);
+        //Create a window with our parameters
+        final PopupWindow receiptWindow = new PopupWindow(receiptView, width, height, focusable);
 
 
-            //Set the animation of the window
-            minimizedRentalWindow.setAnimationStyle(R.style.AnimationPopUp);
+        //Set the animation of the window
+        receiptWindow.setAnimationStyle(R.style.AnimationPopUp);
 
-            //Set the location of the window on the screen
-            minimizedRentalWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+        //Set the location of the window on the screen
+        receiptWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
 
-            initializeMinimizedeRentalViews(minimizedRentalView);
-            maximizeRentButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+        initializeReceiptViews(receiptView);
 
-                    minimizedRentalWindow.dismiss();
-                    openRentalWindow(view);
+        //Handler for clicking on the inactive zone of the window
 
-                 }
-              });
+        receiptView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                //Close the window when clicked
+
+                receiptWindow.dismiss();
+                return true;
             }
+        });
+    }
+
+    private void initializeReceiptViews(View view) {
+
+        long time = rental.getTotalTime();
+
+        long minutes = TimeUnit.MILLISECONDS
+                .toMinutes(time);
+        time -= TimeUnit.MINUTES.toMillis(minutes);
+
+        long seconds = TimeUnit.MILLISECONDS
+                .toSeconds(time);
+
+        finishedCostTextView = view.findViewById(R.id.finishedCostTextView);
+        finishedTimeTextView = view.findViewById(R.id.finishedtTimeTextView);
+        finishedCostTextView.setText("Totalt pris: " + rental.getCost() + "kr");
+
+        if (rental.getTotalTime() >= 60000) {
+            finishedTimeTextView.setText("Total tid: " + minutes + "min " + seconds + "s");
+        } else {
+            finishedTimeTextView.setText("Total tid: " + seconds + " sekunder");
         }
-
-        private void initializeMinimizedeRentalViews(View view) {
-            maximizeRentButton = view.findViewById(R.id.maximizeRentButton);
-        }
-
-
-        private void openReceiptView(final View view) {
-            LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
-            View receiptView = inflater.inflate(R.layout.receipt_for_rental, null);
-
-            int width = LinearLayout.LayoutParams.MATCH_PARENT;
-            int height = LinearLayout.LayoutParams.MATCH_PARENT;
-
-            boolean focusable = true;
-
-            //Create a window with our parameters
-            final PopupWindow receiptWindow = new PopupWindow(receiptView, width, height, focusable);
-
-
-            //Set the animation of the window
-            receiptWindow.setAnimationStyle(R.style.AnimationPopUp);
-
-            //Set the location of the window on the screen
-            receiptWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
-
-            initializeReceiptViews(receiptView);
-            closeReceiptButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    receiptWindow.dismiss();
-                }
-            });
-
-        }
-
-        private void initializeReceiptViews(View view) {
-            finishedCostTextView = view.findViewById(R.id.finishedCostTextView);
-            finishedTimeTextView = view.findViewById(R.id.finishedtTimeTextView);
-            finishedCostTextView.setText("Totalt pris: " + rental.getCost() + "kr");
-            finishedTimeTextView.setText("Total tid: " + rental.getTotalTime()/1000 + " sekunder");
-            closeReceiptButton = view.findViewById(R.id.closeReceiptButton);
-        }
+    }
 }
