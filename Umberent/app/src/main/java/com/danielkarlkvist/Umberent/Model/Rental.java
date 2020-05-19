@@ -36,7 +36,7 @@ class Rental implements IRental {
         return totalTime;
     }
 
-    public  LocalDate getDate() {
+    public LocalDate getDate() {
         return  date;
     }
 
