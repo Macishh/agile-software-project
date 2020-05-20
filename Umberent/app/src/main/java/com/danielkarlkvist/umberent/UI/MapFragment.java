@@ -222,18 +222,6 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         mHashMap.put(m, stand.getID());
     }
 
-   /* public int getStandIcon(IStand stand) {
-        double availability = (double) stand.getAmountOfUmbrellas() / (double) stand.getCapacity();
-
-        if (availability >= 0.65) {
-            return R.drawable.umberella_icon_available;
-        } else if (availability > 0) {
-            return R.drawable.umberella_icon_few_available;
-        } else {
-            return R.drawable.umberella_icon_not_available;
-        }
-    }*/
-
     @Override
     public void onRoutingFailure(RouteException e) {
         // The Routing request failed

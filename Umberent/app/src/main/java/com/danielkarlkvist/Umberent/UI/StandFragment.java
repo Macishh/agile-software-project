@@ -255,7 +255,6 @@ public class StandFragment extends Fragment {
                 // set umbrella for rental
                 rental.setUmbrella(stand.getLastUmbrella());
                 stand.getUmbrellas().remove(stand.getUmbrellas().size() - 1);
-                stand.getStandIcon();
 
                 // set start time for rental
                 rental.setStartTime(System.currentTimeMillis());

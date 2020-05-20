@@ -57,6 +57,10 @@ class Stand implements IStand {
         return new LatLng(longitude, latitude);
     }
 
+    /**
+     * Sets the color of the stand icon according to how many umbrellas are in it
+     * @return Icon for stand
+     */
     public int getStandIcon() {
         double availability = (double) getAmountOfUmbrellas() / (double) getCapacity();
 
