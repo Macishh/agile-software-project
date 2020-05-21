@@ -1,6 +1,7 @@
 package com.danielkarlkvist.Umberent.Database;
 
 import com.danielkarlkvist.Umberent.Model.IProfile;
+import com.danielkarlkvist.Umberent.Model.IRental;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
@@ -20,6 +21,22 @@ public class DatabaseHandler {
         }
 
         return instance;
+    }
+
+    /**
+     * Adds a rental to the database.
+     * @param rental
+     */
+    public void addRental(IRental rental) {
+        Map<String, Object> rentalInformation = new HashMap<>();
+        rentalInformation.put("startTime", rental.getStartTime());
+        rentalInformation.put("endTime", rental.getEndTime());
+        rentalInformation.put("date", rental.getDate().toString());
+        rentalInformation.put("cost", rental.getCost());
+        rentalInformation.put("user", rental.getUser().getMail());
+        rentalInformation.put("umbrella", rental.getUmbrella().getId());
+
+        database.collection("Rentals").document().set(rentalInformation);
     }
 
     /**
@@ -80,4 +97,5 @@ public class DatabaseHandler {
     public void removeUser(IProfile profile) {
         database.collection("Users").document(profile.getMail()).delete();
     }
+
 }

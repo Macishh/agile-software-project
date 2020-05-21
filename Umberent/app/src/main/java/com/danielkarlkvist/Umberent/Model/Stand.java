@@ -1,5 +1,6 @@
 package com.danielkarlkvist.Umberent.Model;
 
+import com.danielkarlkvist.Umberent.R;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ class Stand implements IStand {
     private double longitude;
     private double latitude;
 
-    public Stand(int id, String title, int capacity, double longitude, double latitude) {
+    Stand(int id, String title, int capacity, double longitude, double latitude) {
         this.id = id;
         this.title = title;
         this.capacity = capacity;
@@ -37,6 +38,8 @@ class Stand implements IStand {
     public List<Umbrella> getUmbrellas() {
         return umbrellas;
     }
+
+    public Umbrella getLastUmbrella() {return umbrellas.get(umbrellas.size() - 1); }
 
     /**
      * Returns the amount of umbrellas in the list.
@@ -58,7 +61,7 @@ class Stand implements IStand {
      * Adds an umbrella to the stand if we have not reached our maximum capacity.
      * @param umbrella
      */
-    public void addUmbrella(Umbrella umbrella) {
+    void addUmbrella(Umbrella umbrella) {
         if (umbrellas.size() < capacity) {
             umbrellas.add(umbrella);
         } else {

@@ -36,14 +36,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         hideNavigationBar();
         initializeViews();
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         addToggleForToolbar();
         setNavigationListener();
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, mapFragment).commit();
-
+        toolbar.setNavigationIcon(R.drawable.actionbar_icon);
+    /*
         if (!umberent.userIsLoggedIn()) {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
-        }
+        }*/
         // Hide navgation bar if visible
         View decorView = getWindow().getDecorView();
         decorView.setOnSystemUiVisibilityChangeListener
@@ -55,12 +57,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         }
                     }
                 });
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        hideNavigationBar();
     }
 
     @Override
