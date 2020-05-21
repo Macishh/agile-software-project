@@ -1,5 +1,6 @@
 package com.danielkarlkvist.Umberent.Model;
 
+import com.danielkarlkvist.Umberent.R;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
@@ -37,6 +38,8 @@ class Stand implements IStand {
     public List<Umbrella> getUmbrellas() {
         return umbrellas;
     }
+
+    public Umbrella getLastUmbrella() {return umbrellas.get(umbrellas.size() - 1); }
 
     /**
      * Returns the amount of umbrellas in the list.

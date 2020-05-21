@@ -14,9 +14,12 @@ public interface IStand {
 
     List<Umbrella> getUmbrellas();
 
+    Umbrella getLastUmbrella();
+
     int getAmountOfUmbrellas();
 
     int getCapacity();
 
     LatLng getLatLng();
+
 }
