@@ -58,22 +58,6 @@ class Stand implements IStand {
     }
 
     /**
-     * Sets the color of the stand icon according to how many umbrellas are in it
-     * @return Icon for stand
-     */
-    public int getStandIcon() {
-        double availability = (double) getAmountOfUmbrellas() / (double) getCapacity();
-
-        if (availability >= 0.65) {
-            return R.drawable.umberella_icon_available;
-        } else if (availability > 0) {
-            return R.drawable.umberella_icon_few_available;
-        } else {
-            return R.drawable.umberella_icon_not_available;
-        }
-    }
-
-    /**
      * Adds an umbrella to the stand if we have not reached our maximum capacity.
      * @param umbrella
      */

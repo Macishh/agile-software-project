@@ -217,9 +217,25 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
 
     private void addMarker(IStand stand) {
         Marker m = googleMap.addMarker((new MarkerOptions()
-                .icon(BitmapDescriptorFactory.fromResource(stand.getStandIcon()))
+                .icon(BitmapDescriptorFactory.fromResource(getStandIcon(stand)))
                 .position(stand.getLatLng())));
         mHashMap.put(m, stand.getID());
+    }
+
+    /**
+     * Sets the color of the stand icon according to how many umbrellas are in it
+     * @return Icon for stand
+     */
+    public int getStandIcon(IStand stand) {
+        double availability = (double) stand.getAmountOfUmbrellas() / (double) stand.getCapacity();
+
+        if (availability >= 0.65) {
+            return R.drawable.umberella_icon_available;
+        } else if (availability > 0) {
+            return R.drawable.umberella_icon_few_available;
+        } else {
+            return R.drawable.umberella_icon_not_available;
+        }
     }
 
     @Override

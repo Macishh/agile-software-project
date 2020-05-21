@@ -22,6 +22,4 @@ public interface IStand {
 
     LatLng getLatLng();
 
-    int getStandIcon();
-
 }
