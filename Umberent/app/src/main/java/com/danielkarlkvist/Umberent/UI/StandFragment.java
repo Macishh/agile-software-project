@@ -17,6 +17,7 @@ import com.danielkarlkvist.Umberent.Model.IRental;
 import com.danielkarlkvist.Umberent.Model.IStand;
 import androidx.fragment.app.Fragment;
 
+import com.danielkarlkvist.Umberent.Model.IUmbrella;
 import com.danielkarlkvist.Umberent.Model.Umberent;
 import com.danielkarlkvist.Umberent.R;
 
@@ -54,10 +55,13 @@ public class StandFragment extends Fragment {
     // Umberent instance
     private Umberent umberent = Umberent.getInstance();
     private IRental rental = umberent.getRental();
+    private IStand stand;
 
     private boolean running = false;
-    PopupWindow popupWindow;
-    View popupView;
+     PopupWindow popupWindow;
+     View popupView;
+
+    private MapFragment mapFragment;
 
     /**
      * Method for opening a stand window
@@ -116,11 +120,13 @@ public class StandFragment extends Fragment {
     }
 
      void setStandInfo(IStand stand) {
+         this.stand = stand;
          locationTextView.setText(stand.getTitle());
-         if (stand.getAmountOfUmbrellas() > 1)
+         if (stand.getAmountOfUmbrellas() > 1) {
              amountTextView.setText(stand.getAmountOfUmbrellas() + " / " + stand.getCapacity() + " lediga");
-         else
+         } else {
              amountTextView.setText(stand.getAmountOfUmbrellas() + " / " + stand.getCapacity() + " ledig");
+         }
          priceTextView.setText("2kr / min");
      }
 
@@ -164,8 +170,10 @@ public class StandFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
 
+                    // set rental to inactive
                     umberent.setRentalIsActive(false);
 
+                    // set rental end time, date, price, and totalTime
                     rental.setEndTime(System.currentTimeMillis());
                     rental.setDate(LocalDate.now());
                     rental.setCost((int) rental.calculatePrice(rental.getStartTime(), rental.getEndTime()));
@@ -207,7 +215,7 @@ public class StandFragment extends Fragment {
             closeRentalButton.setVisibility(View.INVISIBLE);
             minimizeRentButton.setVisibility(View.VISIBLE);
         } 
-        // initiates stopwatch and sets in it so every 60 seconds price is updated on view
+        // initiates stopwatch and sets in it so every 30 seconds price is updated on view
         rentalTimeElapsedChronometer = view.findViewById(R.id.rentalTimeElapsedChronometer);
         rentalTimeElapsedChronometer.setFormat("Hyrningstid: %s");
         rentalTimeElapsedChronometer.setBase(SystemClock.elapsedRealtime());
@@ -227,13 +235,19 @@ public class StandFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+                // Start a new rental
+
+                // makes rental active
                 umberent.setRentalIsActive(true);
 
+                // set user for rental
                 rental.setUser(umberent.getProfile());
-                // set umbrella for rental here
 
+                // set umbrella for rental
+                rental.setUmbrella(stand.getLastUmbrella());
+                stand.getUmbrellas().remove(stand.getUmbrellas().size() - 1);
 
-                // Start a new rental
+                // set start time for rental
                 rental.setStartTime(System.currentTimeMillis());
 
                 // start ticking stopwatch

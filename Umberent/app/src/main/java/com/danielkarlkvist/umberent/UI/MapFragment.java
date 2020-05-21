@@ -222,7 +222,11 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, GoogleM
         mHashMap.put(m, stand.getID());
     }
 
-    private int getStandIcon(IStand stand) {
+    /**
+     * Sets the color of the stand icon according to how many umbrellas are in it
+     * @return Icon for stand
+     */
+    public int getStandIcon(IStand stand) {
         double availability = (double) stand.getAmountOfUmbrellas() / (double) stand.getCapacity();
 
         if (availability >= 0.65) {
