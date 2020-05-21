@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.danielkarlkvist.Umberent.Database.DatabaseHandler;
 import com.danielkarlkvist.Umberent.Model.IRental;
 import com.danielkarlkvist.Umberent.Model.IStand;
 import androidx.fragment.app.Fragment;
@@ -56,6 +57,8 @@ public class StandFragment extends Fragment {
     private Umberent umberent = Umberent.getInstance();
     private IRental rental = umberent.getRental();
     private IStand stand;
+
+    private DatabaseHandler databaseHandler = DatabaseHandler.getInstance();
 
     private boolean running = false;
      PopupWindow popupWindow;
@@ -189,6 +192,8 @@ public class StandFragment extends Fragment {
                         rentalWindow.dismiss();
                         openReceiptView(v);
                     }
+
+                    databaseHandler.addRental(rental);
                 }
             });
 

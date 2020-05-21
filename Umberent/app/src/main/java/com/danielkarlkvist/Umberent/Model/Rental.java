@@ -44,11 +44,11 @@ class Rental implements IRental {
         return cost;
     }
 
-    public Profile getUser() {
+    public IProfile getUser() {
         return user;
     }
 
-    public Umbrella getUmbrella() {
+    public IUmbrella getUmbrella() {
         return umbrella;
     }
 

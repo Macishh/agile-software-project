@@ -14,8 +14,8 @@ public interface IRental {
      long calculatePrice(long startTime, long endTime);
      LocalDate getDate();
      int getCost();
-     Profile getUser();
-     Umbrella getUmbrella();
+     IProfile getUser();
+     IUmbrella getUmbrella();
 
      void setStartTime(long startTime);
      void setEndTime(long endTime);
