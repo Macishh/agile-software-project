@@ -1,9 +1,5 @@
 package com.danielkarlkvist.Umberent.Model;
 
-
-
-import com.danielkarlkvist.Umberent.Model.IUmbrella;
-
 import java.time.LocalDate;
 
 /**
@@ -40,7 +36,7 @@ class Rental implements IRental {
         return totalTime;
     }
 
-    public  LocalDate getDate() {
+    public LocalDate getDate() {
         return  date;
     }
 
@@ -82,6 +78,15 @@ class Rental implements IRental {
 
     public void setUmbrella(Umbrella umbrella) {
         this.umbrella = umbrella;
+    }
+
+    public long calculateRentalTime(long startTime, long endTime) {
+        return endTime - startTime;
+    }
+
+    public long calculatePrice(long startTime, long endTime){
+        long difference = endTime - startTime;
+        return (2 * ((difference) / 1000)) / 60;
     }
 
     @Override

@@ -17,6 +17,7 @@ import com.danielkarlkvist.Umberent.Model.IRental;
 import com.danielkarlkvist.Umberent.Model.IStand;
 import androidx.fragment.app.Fragment;
 
+import com.danielkarlkvist.Umberent.Model.IUmbrella;
 import com.danielkarlkvist.Umberent.Model.Umberent;
 import com.danielkarlkvist.Umberent.R;
 
@@ -51,17 +52,16 @@ public class StandFragment extends Fragment {
     private TextView finishedTimeTextView;
     private ImageButton closeReceiptButton;
 
-
     // Umberent instance
     private Umberent umberent = Umberent.getInstance();
     private IRental rental = umberent.getRental();
+    private IStand stand;
 
-
-    private long difference;
     private boolean running = false;
-    PopupWindow popupWindow;
-    View popupView;
+     PopupWindow popupWindow;
+     View popupView;
 
+    private MapFragment mapFragment;
 
     /**
      * Method for opening a stand window
@@ -73,7 +73,6 @@ public class StandFragment extends Fragment {
         LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
         popupView = inflater.inflate(R.layout.stand_card, null);
 
-
         //Specify the length and width through constants
         int width = LinearLayout.LayoutParams.MATCH_PARENT;
         int height = LinearLayout.LayoutParams.MATCH_PARENT;
@@ -84,7 +83,7 @@ public class StandFragment extends Fragment {
         //Create a window with our parameters
         popupWindow = new PopupWindow(popupView, width, height, focusable);
 
-       //Set the animation of the window
+        //Set the animation of the window
         popupWindow.setAnimationStyle(R.style.AnimationPopUp);
 
         //Set the location of the window on the screen
@@ -93,7 +92,7 @@ public class StandFragment extends Fragment {
         //Initialize the elements of our window, install the handler
         initializeViews(popupView);
 
-        // initialize rent button
+        //Initialize rent button
         rent_button = popupView.findViewById(R.id.rent_button);
         rent_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,26 +108,25 @@ public class StandFragment extends Fragment {
         });
 
         //Handler for clicking on the inactive zone of the window
-
         popupView.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                //Close the window when clicked
 
+                //Close the window when clicked
                 popupWindow.dismiss();
                 return true;
             }
         });
-
-
     }
 
      void setStandInfo(IStand stand) {
+         this.stand = stand;
          locationTextView.setText(stand.getTitle());
-         if (stand.getAmountOfUmbrellas() > 1)
+         if (stand.getAmountOfUmbrellas() > 1) {
              amountTextView.setText(stand.getAmountOfUmbrellas() + " / " + stand.getCapacity() + " lediga");
-         else
+         } else {
              amountTextView.setText(stand.getAmountOfUmbrellas() + " / " + stand.getCapacity() + " ledig");
+         }
          priceTextView.setText("2kr / min");
      }
 
@@ -158,7 +156,6 @@ public class StandFragment extends Fragment {
             //Set the location of the window on the screen
             rentalWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
 
-
             initializeRentalViews(rentalView);
             initializeRentalButtonListeners();
             minimizeRentButton.setOnClickListener(new View.OnClickListener() {
@@ -173,12 +170,14 @@ public class StandFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
 
+                    // set rental to inactive
                     umberent.setRentalIsActive(false);
 
+                    // set rental end time, date, price, and totalTime
                     rental.setEndTime(System.currentTimeMillis());
                     rental.setDate(LocalDate.now());
-                    rental.setCost((int) calculatePrice(rental.getStartTime(), rental.getEndTime()));
-                    rental.setTotalTime(calculateRentalTime(rental.getStartTime(), rental.getEndTime()));
+                    rental.setCost((int) rental.calculatePrice(rental.getStartTime(), rental.getEndTime()));
+                    rental.setTotalTime(rental.calculateRentalTime(rental.getStartTime(), rental.getEndTime()));
 
                     System.out.println(rental.toString());
 
@@ -216,7 +215,7 @@ public class StandFragment extends Fragment {
             closeRentalButton.setVisibility(View.INVISIBLE);
             minimizeRentButton.setVisibility(View.VISIBLE);
         } 
-        // initiates stopwatch and sets in it so every 60 seconds price is updated on view
+        // initiates stopwatch and sets in it so every 30 seconds price is updated on view
         rentalTimeElapsedChronometer = view.findViewById(R.id.rentalTimeElapsedChronometer);
         rentalTimeElapsedChronometer.setFormat("Hyrningstid: %s");
         rentalTimeElapsedChronometer.setBase(SystemClock.elapsedRealtime());
@@ -224,7 +223,7 @@ public class StandFragment extends Fragment {
             @Override
             public void onChronometerTick(Chronometer chronometer) {
                 if ((SystemClock.elapsedRealtime() - rentalTimeElapsedChronometer.getBase()) >= 30000) {
-                    currentPriceTextView.setText("Totalt pris: " + calculatePrice(rental.getStartTime(), System.currentTimeMillis()) + "kr");
+                    currentPriceTextView.setText("Totalt pris: " + rental.calculatePrice(rental.getStartTime(), System.currentTimeMillis()) + "kr");
                 }
             }
         });
@@ -236,13 +235,19 @@ public class StandFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
+                // Start a new rental
+
+                // makes rental active
                 umberent.setRentalIsActive(true);
 
+                // set user for rental
                 rental.setUser(umberent.getProfile());
-                // set umbrella for rental here
 
+                // set umbrella for rental
+                rental.setUmbrella(stand.getLastUmbrella());
+                stand.getUmbrellas().remove(stand.getUmbrellas().size() - 1);
 
-                // Start a new rental
+                // set start time for rental
                 rental.setStartTime(System.currentTimeMillis());
 
                 // start ticking stopwatch
@@ -254,22 +259,6 @@ public class StandFragment extends Fragment {
                 minimizeRentButton.setVisibility(View.VISIBLE);
             }
         });
-    }
-
-    private long calculateRentalTime(long startTime, long endTime) {
-
-        difference = endTime - startTime;
-        System.out.println("Time of rental: " + difference/1000 + " seconds");
-        return difference;
-    }
-
-    private long calculatePrice(long startTime, long endTime){
-
-        difference = endTime - startTime;
-        long totalCost = (2*((difference)/1000))/60;
-        System.out.println("Total cost is: " + totalCost + "kr");
-        return totalCost;
-
     }
 
     // Methods for Chronometer/Stopwatch
@@ -304,7 +293,6 @@ public class StandFragment extends Fragment {
             //Create a window with our parameters
             final PopupWindow minimizedRentalWindow = new PopupWindow(minimizedRentalView, width, height, focusable);
 
-
             //Set the animation of the window
             minimizedRentalWindow.setAnimationStyle(R.style.AnimationPopUp);
 
@@ -328,7 +316,6 @@ public class StandFragment extends Fragment {
             maximizeRentButton = view.findViewById(R.id.maximizeRentButton);
         }
 
-
         private void openReceiptView(final View view) {
             LayoutInflater inflater = (LayoutInflater) view.getContext().getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
             View receiptView = inflater.inflate(R.layout.receipt_for_rental, null);
@@ -340,7 +327,6 @@ public class StandFragment extends Fragment {
 
             //Create a window with our parameters
             final PopupWindow receiptWindow = new PopupWindow(receiptView, width, height, focusable);
-
 
             //Set the animation of the window
             receiptWindow.setAnimationStyle(R.style.AnimationPopUp);

@@ -14,7 +14,7 @@ class Profile implements IProfile {
     private String expirationDate;
     private String cvc;
 
-    public Profile(String firstName, String lastName, String mail, String password) {
+    Profile(String firstName, String lastName, String mail, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.mail = mail;
