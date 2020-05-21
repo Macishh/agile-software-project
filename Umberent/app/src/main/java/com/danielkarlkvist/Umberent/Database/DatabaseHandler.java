@@ -80,4 +80,5 @@ public class DatabaseHandler {
     public void removeUser(IProfile profile) {
         database.collection("Users").document(profile.getMail()).delete();
     }
+
 }
