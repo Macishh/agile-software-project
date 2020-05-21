@@ -34,6 +34,7 @@
         android:id="@+id/nav_view"
         app:menu="@menu/main_menu"
         android:layout_gravity="start"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        app:headerLayout="@layout/nav_layout"/>
 
 </androidx.drawerlayout.widget.DrawerLayout>
