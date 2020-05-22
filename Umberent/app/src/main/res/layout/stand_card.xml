@@ -33,7 +33,7 @@
                 android:outlineAmbientShadowColor="#BC1A1A"
                 android:radius="20dp"
                 android:text="Hyr paraply"
-                android:textColor="#1233D1"
+                android:textColor="@color/standText"
                 android:visibility="visible" />
 
 

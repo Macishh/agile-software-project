@@ -40,8 +40,6 @@ public class StandFragment extends Fragment {
     private Button end_rent_button;
     private Button start_rent_button;
     private Chronometer rentalTimeElapsedChronometer;
-    private ImageButton minimizeRentButton;
-    private ImageButton closeRentalButton;
     private TextView currentPriceTextView;
     private TextView confirmRental;
 
@@ -53,13 +51,11 @@ public class StandFragment extends Fragment {
     //components for Receipt Window
     private TextView finishedCostTextView;
     private TextView finishedTimeTextView;
-    private ImageButton closeReceiptButton;
 
 
     // Umberent instance
     private Umberent umberent = Umberent.getInstance();
     private IRental rental = umberent.getRental();
-
 
     private long difference;
     private boolean running = false;
@@ -103,6 +99,7 @@ public class StandFragment extends Fragment {
         rent_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
 
                 // Remove stand window
                 popupWindow.dismiss();
@@ -169,22 +166,29 @@ public class StandFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                umberent.setRentalIsActive(false);
-                rental.setEndTime(System.currentTimeMillis());
-                rental.setDate(LocalDate.now());
-                rental.setCost((int) calculatePrice(rental.getStartTime(), rental.getEndTime()));
-                rental.setTotalTime(calculateRentalTime(rental.getStartTime(), rental.getEndTime()));
+
+                //"Open receipt"-statement here
+                if (umberent.rentalIsActive()) {
+
+                    umberent.setRentalIsActive(false);
+                    rental.setEndTime(System.currentTimeMillis());
+                    rental.setDate(LocalDate.now());
+                    rental.setCost((int) calculatePrice(rental.getStartTime(), rental.getEndTime()));
+                    rental.setTotalTime(calculateRentalTime(rental.getStartTime(), rental.getEndTime()));
+
+                    rentalWindow.dismiss();
+                    openReceiptView(v);
+
+                } else {
+                    rentalWindow.dismiss();
+                }
 
                 System.out.println(rental.toString());
 
                 // reset chronometer
                 resetChronometer(v);
 
-                //"Open receipt"-statement here
-                if (!umberent.rentalIsActive()) {
-                    rentalWindow.dismiss();
-                    openReceiptView(v);
-                }
+
             }
         });
 
@@ -196,7 +200,6 @@ public class StandFragment extends Fragment {
         confirmRental = view.findViewById(R.id.confirmRental);
         umbrella = view.findViewById(R.id.umbrella_imageView2);
         currentPriceTextView = view.findViewById(R.id.currentPriceTextView);
-        //closeRentalButton = view.findViewById(R.id.closeRentalButton);
         rentalTimeElapsedChronometer = view.findViewById(R.id.rentalTimeElapsedChronometer);
 
         if (!umberent.rentalIsActive()) {
@@ -206,11 +209,6 @@ public class StandFragment extends Fragment {
             rentalTimeElapsedChronometer.setVisibility(View.INVISIBLE);
         }
 
-        if (umberent.rentalIsActive()) {
-            closeRentalButton.setVisibility(View.INVISIBLE);
-            minimizeRentButton.setVisibility(View.VISIBLE);
-
-        }
         // initiates stopwatch and sets in it so every 60 seconds price is updated on view
         rentalTimeElapsedChronometer.setFormat("Hyrningstid: %s");
         rentalTimeElapsedChronometer.setBase(SystemClock.elapsedRealtime());

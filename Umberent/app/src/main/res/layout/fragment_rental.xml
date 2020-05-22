@@ -31,11 +31,11 @@
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="56dp"
-            android:background="@drawable/shape_pcbutton"
+            android:background="@drawable/shape_pcbutton_red"
             android:outlineAmbientShadowColor="#BC1A1A"
             android:radius="20dp"
             android:text="Avsluta hyrning"
-            android:textColor="#F44336" />
+            android:textColor="#CC2828" />
 
 
         <Button
@@ -48,7 +48,7 @@
             android:outlineAmbientShadowColor="#BC1A1A"
             android:radius="20dp"
             android:text="Bekräfta"
-            android:textColor="#1233D1"
+            android:textColor="@color/standText"
             android:visibility="visible" />
 
         <TextView
