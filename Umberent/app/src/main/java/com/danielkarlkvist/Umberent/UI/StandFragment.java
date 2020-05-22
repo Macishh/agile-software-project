@@ -103,12 +103,13 @@ public class StandFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-
-                // Remove stand window
-                popupWindow.dismiss();
-
-                // Open Rental window
-                openRentalWindow(view);
+                if(stand.getCapacity() != 0) {
+                    // Remove stand window
+                    popupWindow.dismiss();
+                    // Open Rental window
+                    openRentalWindow(view);
+                }else{
+                    System.out.println("Can't rent since the stand has no umbrella in it");}
 
             }
         });
