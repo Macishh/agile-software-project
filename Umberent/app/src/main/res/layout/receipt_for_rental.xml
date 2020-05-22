@@ -1,56 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="300dp"
         android:layout_marginLeft="4dp"
+        android:layout_marginTop="498dp"
         android:layout_marginRight="4dp"
-        android:layout_marginTop="230dp"
+        android:layout_marginBottom="4dp"
         app:cardBackgroundColor="#FFFFFF"
         app:cardCornerRadius="16dp">
-
-        <ImageButton
-            android:id="@+id/closeReceiptButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="350dp"
-            android:background="#FFFFFF"
-            app:srcCompat="@android:drawable/btn_dialog" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tack för din hyrning!"
-            android:textSize="30sp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="4dp"
+            android:text="Tack för att du använder Umberent!"
+            android:textColor="@color/standText"
+            android:textSize="24dp"
             android:textStyle="bold" />
 
         <ImageView
             android:id="@+id/umbrella_imageView2"
-            android:layout_width="175dp"
-            android:layout_height="150dp"
-            android:layout_marginLeft="60dp"
-            android:layout_marginTop="300dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="-34dp"
             android:rotation="10"
-            android:src="@drawable/umbrella_real" />
+            android:src="@drawable/umbrella_realshadow" />
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="42dp"
+            android:visibility="visible"
+            app:srcCompat="@drawable/receipt" />
 
         <TextView
             android:id="@+id/finishedCostTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="180dp"
             android:text="Totalt pris:"
-            android:textSize="30sp" />
+            android:textColor="#000000"
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/finishedtTimeTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="160dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="210dp"
             android:text="Total tid:"
-            android:textSize="30sp" />
+            android:textColor="#000000"
+
+            android:textSize="20dp" />
 
     </androidx.cardview.widget.CardView>
 </RelativeLayout>
