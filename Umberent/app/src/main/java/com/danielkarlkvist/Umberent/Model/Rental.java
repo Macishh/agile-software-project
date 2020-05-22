@@ -86,7 +86,7 @@ class Rental implements IRental {
 
     public long calculatePrice(long startTime, long endTime){
         long difference = endTime - startTime;
-        return (2 * ((difference) / 1000)) / 60;
+        return (2 * ((difference) / 1000)) / 60 + 2;
     }
 
     @Override
