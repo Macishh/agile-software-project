@@ -1,7 +1,7 @@
 # Individual reflection: Theodor Khademi, week 7
 
 As this is my last individual reflection for the project, my focus for this reflection will mainly lie in reflecting on what I have 
-learned the project and the course throughout the weeks, not what I have to learn further and how I get there. My primary goal now is to keep the knowledge
+learned on the project and the course throughout the weeks, not what I have to learn further and how I get there. My primary goal now is to keep the knowledge
 I already have and being able to apply that to future projects.
 
 ## What do I want to learn or understand better?
