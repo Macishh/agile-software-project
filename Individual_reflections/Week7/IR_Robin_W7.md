@@ -18,8 +18,9 @@ Since I had a great experience already, I always tried to be active in our meeti
 ## What is my contribution towards the team’s use of Scrum?
 
 ### Var är jag idag?  
-
+I always tried to stay focused and active during the meetings we have had in order to make it as efficient as possible. I was also the first one who tried out the scrum master role, with no experience what so ever. This led to the meetings being more structured, which we all liked. Therefore, we decided to switch the role so that everyone who wanted to try it out got to do it.
 
 ## What is my contribution towards the team’s deliveries?
 
 ### Vart är jag idag?  
+In the beginning, I was a part of choosing this particular project together with my team. Later on, I held a Git workshop to introduce this tool for some and refresh the memory of the version control system that we used. I have worked a lot with the Google Maps API. This includes adding an clickable umbrella marker on the map that shows a popup with some basic information about that particular stand. This is the view that enables the user to actually rent an umbrella. I also worked a lot with adding a route from the user's specific location to a stand, which was very fun to implement! All this includes doing front-end work like designing the GUI for a specific view. In addition, I have participated in writing the social contract and every team reflection. I have also been a part of creating both a domain model and an updated UML over the model with my team. I have also been a part of some pull requests about the implementation of the database, which was super rewarding because my knowledge in Firebase is not that high. 
