@@ -70,7 +70,7 @@ Here you can find files for our team reflections.
 When in the "agile-software-project" folder:
 1. Open the "Final Reflection" pdf file
 
-# Mockups 
+### Mockups 
 When in the "agile-software-project" folder:
 1. Open the "Mockups" folder
 
