@@ -28,7 +28,7 @@ Here are the different github aliases for our group members:
 
 ## Project Structure
 
-# Source code 
+### Source code 
 Walkthrough: 
 1. Open "Umberent" folder
 2. Open "app" folder
@@ -43,7 +43,7 @@ OBS! One UI file, "MapFragment.java", is in the "umberent/UI" folder.
 
 Once here you can find the source code for our database implementation, our overall model and all of the UI components for our application.
 
-# Tests
+### Tests
 Walkthrough: 
 1. Open "Umberent" folder
 2. Open "app" folder
@@ -54,13 +54,13 @@ Once inside the "src" folder:
 
 Here you can find the unit tests for our application
 
-# Individual Reflections
+### Individual Reflections
 When in the "agile-software-project" folder:
 1. Open the "Individual_Reflections" folder
 
 Here you can navigate to folders(named after what week of the project it was made) containing all our individual reflections.
 
-# Team Reflections 
+### Team Reflections 
 When in the "agile-software-project" folder:
 1. Open the "TeamReflections" folder
 
@@ -92,7 +92,7 @@ a member has made during the project or how many lines of code they have added/d
 
 ## Other Resources Used
 
-# Trello 
+### Trello 
 Used for handling our user stories:
 https://trello.com/b/jf0cSlHt/agile-software-project
 
